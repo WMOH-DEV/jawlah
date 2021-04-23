@@ -187,3 +187,28 @@ div.items-start > div:nth-child(3){
     margin-right: 20px;
     margin-top: 1rem;
 }
+.timeline::before{
+    left: unset;
+    right: 1.375rem;
+}
+
+.timeline-event-icon::before{
+    border-left:unset;
+    right: unset;
+    left: -.625rem;
+    border-right: .625rem solid #fff;
+}
+.timeline-event-block{
+    margin-left: unset;
+    margin-right: 4rem;
+}
+
+/*@media (min-width: 1200px){*/
+/*    .timeline-centered .timeline-event-icon {*/
+/*        left: unset;*/
+/*    }*/
+/*}*/
+
+.font-size-xs{
+    font-size: .675rem!important;
+}

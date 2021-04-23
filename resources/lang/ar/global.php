@@ -13,4 +13,7 @@ return [
     'author'                => 'Wael Mohamed ®',
     'site'                  => 'دليل المسافر',
     'author_link'           => 'https://www.fb.com/WaelMohElSaid',
+    'latest_requests'       => 'آخر عمليات الشراء',
+    'latest_register'       => 'آخر عمليات التسجيل',
+    'sales_report'       => 'تقرير المبيعات'
 ];
