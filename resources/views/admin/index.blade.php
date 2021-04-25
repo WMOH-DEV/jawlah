@@ -225,33 +225,6 @@
                                         </div>
                                     </li>
 
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-xsmooth">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
                                     <!-- System Event -->
                                     <li class="timeline-event">
                                         <div class="timeline-event-icon bg-dark">
@@ -301,7 +274,7 @@
                                     <!-- new buy -->
                                     <li class="timeline-event">
                                         <div class="timeline-event-icon bg-default">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i class="fas fa-user-alt"></i>
                                         </div>
                                         <div
                                             class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
@@ -329,7 +302,7 @@
 
                                     <li class="timeline-event">
                                         <div class="timeline-event-icon bg-info">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i class="fas fa-user-alt"></i>
                                         </div>
                                         <div
                                             class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
@@ -356,7 +329,7 @@
 
                                     <li class="timeline-event">
                                         <div class="timeline-event-icon bg-success">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i class="fas fa-user-alt"></i>
                                         </div>
                                         <div
                                             class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
@@ -383,34 +356,7 @@
 
                                     <li class="timeline-event">
                                         <div class="timeline-event-icon bg-danger">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-xsmooth">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i class="fas fa-user-alt"></i>
                                         </div>
                                         <div
                                             class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
@@ -438,7 +384,7 @@
                                     <!-- System Event -->
                                     <li class="timeline-event">
                                         <div class="timeline-event-icon bg-dark">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i class="fas fa-user-alt"></i>
                                         </div>
                                         <div
                                             class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
@@ -480,29 +426,6 @@
                         <div class="text-muted mb-3">{{ __('global.registered_users') }}</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                        <a class="font-w500" href="javascript:void(0)">
-                            {{ __('global.view_all') }}
-                            <i class="fa fa-arrow-left mr-1 opacity-25"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="block block-rounded">
-                    <div
-                        class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
-                        <div class="mr-3">
-                            <p class="font-size-h3 font-w700 mb-0">
-                                12121
-                            </p>
-                            <p class="text-muted mb-0">
-                                عدد المستخدمين
-                            </p>
-                        </div>
-                        <div class="item rounded-lg bg-body-dark">
-                            <i class="fa fa-check text-muted"></i>
-                        </div>
-                    </div>
-                    <div
-                        class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
                         <a class="font-w500" href="javascript:void(0)">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>

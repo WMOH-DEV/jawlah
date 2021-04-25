@@ -66,42 +66,42 @@
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xwork" data-toggle="theme" data-theme="admin/assets/css/themes/xwork.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xwork" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xwork.min.css" href="#">
                     xWork
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xmodern" data-toggle="theme" data-theme="admin/assets/css/themes/xmodern.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xmodern" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xmodern.min.css" href="#">
                     xModern
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xeco" data-toggle="theme" data-theme="admin/assets/css/themes/xeco.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xeco" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xeco.min.css" href="#">
                     xEco
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xsmooth" data-toggle="theme" data-theme="admin/assets/css/themes/xsmooth.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xsmooth" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xsmooth.min.css" href="#">
                     xSmooth
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xinspire" data-toggle="theme" data-theme="admin/assets/css/themes/xinspire.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xinspire" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xinspire.min.css" href="#">
                     xInspire
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xdream" data-toggle="theme" data-theme="admin/assets/css/themes/xdream.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xdream" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xdream.min.css" href="#">
                     xDream
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xpro" data-toggle="theme" data-theme="admin/assets/css/themes/xpro.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xpro" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xpro.min.css" href="#">
                     xPro
                   </a>
                 </div>
                 <div class="col-4 mb-1">
-                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xplay" data-toggle="theme" data-theme="admin/assets/css/themes/xplay.min.css" href="#">
+                  <a class="d-block py-3 text-white font-size-sm font-w600 bg-xplay" data-toggle="theme" data-theme="{{asset('admin/assets')}}/css/themes/xplay.min.css" href="#">
                     xPlay
                   </a>
                 </div>

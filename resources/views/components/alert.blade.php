@@ -1,5 +1,5 @@
 @if ($errors->any())
-  <div class="content" id="sessionMsg">
+  <div class="content" id="alertMsg">
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">×</span>

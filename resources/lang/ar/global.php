@@ -15,5 +15,12 @@ return [
     'author_link'           => 'https://www.fb.com/WaelMohElSaid',
     'latest_requests'       => 'آخر عمليات الشراء',
     'latest_register'       => 'آخر عمليات التسجيل',
-    'sales_report'       => 'تقرير المبيعات'
+    'sales_report'       => 'تقرير المبيعات',
+
+    /**************************************/
+    'add' => 'إضافة',
+    'new' => 'جديد',
+    'del' => 'حذف',
+    'list' => 'قائمة',
+    'clients' => 'الاعضاء',
 ];

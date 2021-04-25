@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\ModsController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\RoleController;
@@ -26,3 +27,5 @@ Route::middleware('auth')->group(function (){
     Route::resource('mods', ModsController::class);
 
 });
+
+Route::resource('clients', ClientController::class);

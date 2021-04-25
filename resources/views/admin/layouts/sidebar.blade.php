@@ -42,7 +42,7 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item">
-                    <a class="nav-main-link active" href="/admincp">
+                    <a class="nav-main-link" href="/admincp">
                         <i class="nav-main-link-icon fa fa-home"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.main_page') }}</span>
                     </a>
@@ -52,7 +52,7 @@
 
                     <!-- users -->
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
+                        <a class="nav-main-link {{ Route::currentRouteName() == 'clients.index' ? 'active' : ''}}" href="{{route('clients.index')}}">
                             <i class="nav-main-link-icon fas fa-users"></i>
                             <span class="nav-main-link-name">{{ __('sidebar.users') }}</span>
                         </a>

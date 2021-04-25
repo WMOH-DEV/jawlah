@@ -12,6 +12,7 @@
     </div>
   </div>
 </footer>
+@livewireScripts
 <!-- END Footer -->
 </div>
 @notifyJs
@@ -24,12 +25,13 @@
 <script src="{{asset('admin/assets/js/plugins/nice-select/jquery.nice-select.min.js')}}"></script>
 <script src="{{ asset('admin/assets/js/plugins/dropify.js') }}"></script>
 <script>
-
   jQuery(() => {
-    if ($("#sessionMsg")) {
+    if ($("#alertMsg")) {
       $("#sessionMsg").delay(6000).slideUp(1500);
     }
-
+      if ($("#sessionMsg")) {
+          $("#sessionMsg").delay(6000).slideUp(1500);
+      }
     if (!$('.inset-0')) {
       return;
     }
