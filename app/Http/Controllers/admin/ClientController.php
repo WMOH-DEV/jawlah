@@ -56,8 +56,4 @@ class ClientController extends Controller
         return back();
     } // End update
 
-    public function destroy($id)
-    {
-        //
-    }
 }

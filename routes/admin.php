@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\admin\ClientController;
+use App\Http\Controllers\admin\MerchantController;
 use App\Http\Controllers\admin\ModsController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\RoleController;
@@ -23,9 +24,9 @@ Route::middleware('auth')->group(function (){
 
    // Route::get('/', [HomeController::class, 'HomeView'])->name('admincp.index');
 
-    Route::resource('roles', RoleController::class);
-    Route::resource('mods', ModsController::class);
+
 
 });
 
 Route::resource('clients', ClientController::class);
+Route::resource('merchants', MerchantController::class);

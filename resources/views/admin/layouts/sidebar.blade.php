@@ -60,7 +60,7 @@
 
                 <!-- merchants -->
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'merchants.index' ? 'active' : ''}}" href="{{route('merchants.index')}}">
                         <i class="nav-main-link-icon fas fa-users"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.Merchants') }}</span>
                     </a>
