@@ -27,7 +27,7 @@
 <script>
   jQuery(() => {
     if ($("#alertMsg")) {
-      $("#sessionMsg").delay(6000).slideUp(1500);
+      $("#alertMsg").delay(6000).slideUp(1500);
     }
       if ($("#sessionMsg")) {
           $("#sessionMsg").delay(6000).slideUp(1500);

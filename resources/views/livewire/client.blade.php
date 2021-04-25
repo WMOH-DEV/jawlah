@@ -100,21 +100,11 @@
 
                         </th>
 
-                        <th class="text-center">
-                                    رقم ID
-                        </th>
-                        <th class="text-center">
-                            الإسم
-                        </th>
-                        <th class="text-center">
-                            رقم الجوال
-                        </th>
-                        <th class="text-center">
-                            البريد الإلكتروني
-                        </th>
-                        <th class="text-center">
-                            تاريخ الإضافة
-                        </th>
+                        <th class="text-center">رقم ID</th>
+                        <th class="text-center">الإسم</th>
+                        <th class="text-center">رقم الجوال</th>
+                        <th class="text-center">البريد الإلكتروني</th>
+                        <th class="text-center">تاريخ الإضافة</th>
                         <th class="text-center" style="width: 100px;">الاجراءات</th>
                     </tr>
                     </thead>
@@ -129,37 +119,26 @@
                                            value="{{$client->id}}"
                                            id="{{$client->id}}"
                                            name="{{$client->id}}"
-                                           wire:model="checked"
-                                    >
+                                           wire:model="checked">
                                     <label class="custom-control-label" for="{{$client->id}}"></label>
                                 </div>
                             </td>
-                            <td class="text-center">
-                                {{ $client->id }}
-                            </td>
-                            <td class="text-center">
-                                {{ $client->name }}
-                            </td>
-                            <td class="text-center">
-                                {{ $client->phone }}
-                            </td>
-                            <td class="text-center">
-                                {{ $client->email }}
-                            </td>
-                            <td class="text-center">
-                                {{ $client->created_at->format('Y-m-d') }}
-                            </td>
+                            <td class="text-center">{{ $client->id }}</td>
+                            <td class="text-center">{{ $client->name }}</td>
+                            <td class="text-center">{{ $client->phone }}</td>
+                            <td class="text-center">{{ $client->email }}</td>
+                            <td class="text-center">{{ $client->created_at->format('Y-m-d') }}</td>
                             <!-- Actions -->
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-right"
+                                    <a href="{{route('clients.edit', $client->id)}}" type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-right"
                                             data-toggle="tooltip" title="" data-original-title="Edit">
                                         <i class="fa fa-pencil-alt"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-mid"
-                                            data-toggle="tooltip" title="" data-original-title="Edit">
+                                    </a>
+                                    <a href="{{route('clients.show', $client->id)}}" type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-mid"
+                                            data-toggle="tooltip" title="" data-original-title="show">
                                         <i class="fa fa-eye"></i>
-                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-left"
                                             title="حذف" data-original-title="delete" data-toggle="modal"
                                             data-target="#modal-client-delete{{$client->id}}">
