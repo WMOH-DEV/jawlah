@@ -28,11 +28,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-5">
-                    <button type="button" wire:offline.attr="disabled" class="btn btn-outline-success mr-1 mb-3 btn-sm" data-toggle="modal"
-                            data-target="#modal-add-Faculty">
+                    <a href="{{route('clients.create')}}" type="button" wire:offline.attr="disabled" class="btn btn-outline-success mr-1 mb-3 btn-sm"
+                          >
                         <i class="fa fa-fw fa-plus mr-1"></i>
                         {{ __('global.add') }}
-                    </button>
+                    </a>
                 @if (count($checked) > 0)
                     <!-- Delete all -->
                     <button type="button"

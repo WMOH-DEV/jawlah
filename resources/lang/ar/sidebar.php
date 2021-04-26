@@ -23,6 +23,7 @@ return [
     'Merchants'                 => 'التجار',
     'activities'                => 'الأنشطة',
     'categories'                => 'الفئات',
+    'cities'                => 'المدن',
     'tickets'                   => 'التذاكر',
     'pages'                     => 'الصفحات',
     'go_to_site'                     => 'الذهاب إلى الموقع',

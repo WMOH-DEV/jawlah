@@ -1,11 +1,9 @@
 <?php
 
 
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\MerchantController;
-use App\Http\Controllers\admin\ModsController;
-use App\Http\Controllers\admin\ProductController;
-use App\Http\Controllers\admin\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
@@ -30,3 +28,4 @@ Route::middleware('auth')->group(function (){
 
 Route::resource('clients', ClientController::class);
 Route::resource('merchants', MerchantController::class);
+Route::resource('categories', CategoryController::class);

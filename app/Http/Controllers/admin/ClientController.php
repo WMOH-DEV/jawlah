@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientRequest;
 use App\Models\admin\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class ClientController extends Controller
@@ -19,14 +20,27 @@ class ClientController extends Controller
 
     public function create()
     {
-        //
-    }
+        return view('admin.clients.create');
+    } // end create
 
 
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name'      => 'required',
+            'email'     => 'required|email|unique:users,email',
+            'password'  => 'required|same:confirm-password|min:8',
+            'phone'     => 'required'
+        ]);
+
+        $input = $request->all();
+        $input['role_id'] = 1 ;
+        $input['password'] = Hash::make($input['password']);
+        User::create($input);
+        notify()->success('إضافة عضو جديد إلى الموقع', ' تم بنجاح');
+
+        return redirect()->route('clients.index');
+    } // End Store
 
 
     public function show($id)

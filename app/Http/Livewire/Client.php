@@ -82,7 +82,7 @@ class Client extends Component
             ->where(function ($query) {
                 $query->where('name', 'like', "%$this->search%")
                     ->OrWhere('email', 'like', "%$this->search%");
-            });
+            })->latest('id');
     }
 
     public function isChecked($id)

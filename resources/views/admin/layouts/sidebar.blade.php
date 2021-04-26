@@ -25,7 +25,7 @@
 
                 <!-- Close Sidebar, Visible only on mobile screens -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <a class="d-lg-none text-white ml-2" data-toggle="layout" data-action="sidebar_close"
+                <a class="d-lg-none text-dark ml-2" data-toggle="layout" data-action="sidebar_close"
                     href="javascript:void(0)">
                     <i class="fa fa-times-circle"></i>
                 </a>
@@ -66,16 +66,23 @@
                     </a>
                 </li>
 
-                    <!-- activites -->
-                    <li class="nav-main-item">
-                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                    <!-- activities -->
+                    <li class="nav-main-item {{ Route::currentRouteName() === 'categories.index' ? 'open' : ''}}">
+                        <a class="nav-main-link nav-main-link-submenu " data-toggle="submenu" aria-haspopup="true"
                             aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fas fa-plane"></i>
                             <span class="nav-main-link-name">{{ __('sidebar.activities') }}</span>
                         </a>
                         <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="{{route('categories.index')}}">
+                                    <i class="nav-main-link-icon fas fa-city"></i>
+                                    <span class="nav-main-link-name">{{ __('sidebar.cities') }}</span>
+                                </a>
+                            </li>
+
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link" href="#">
+                                    <a class="nav-main-link" href="{{route('categories.index')}}">
                                         <i class="nav-main-link-icon fas fa-check-double"></i>
                                         <span class="nav-main-link-name">{{ __('sidebar.categories') }}</span>
                                     </a>

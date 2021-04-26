@@ -4,6 +4,7 @@ namespace App\Models\admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
 class Merchant extends Model
@@ -25,7 +26,7 @@ class Merchant extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function role()
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
