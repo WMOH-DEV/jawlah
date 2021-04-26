@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\admin\Category;
+use App\Models\admin\City;
 use App\Models\admin\Role;
 use App\Models\admin\User;
 use Illuminate\Database\Seeder;
@@ -21,7 +22,8 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'تاجر',]);
 
         User::factory()->count(50)->create();
-        Category::factory()->count(20)->create();
+        Category::factory()->count(50)->create();
+        City::factory()->count(50)->create();
 
 
     }

@@ -1,7 +1,7 @@
 @extends('admin.main-layout')
 
 @section('title')
-تعديل {{$cat->name}}
+تعديل {{$city->name}}
 @endsection
 
 
@@ -10,7 +10,7 @@
   <div class="content">
     <div class="block block-rounded">
       <div class="block-header block-header-default">
-        <h3 class="block-title">  تعديل {{$cat->name}} </h3>
+        <h3 class="block-title">  تعديل {{$city->name}} </h3>
         <div class="block-options">
           <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option"
                   data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
@@ -31,12 +31,12 @@
       </div>
 
       <div class="block-content block-content-full">
-        <form action="{{route('categories.update', $cat->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('cities.update', $city->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('put')
           <div class="row">
             <div class="col-sm-12  d-flex ">
-              <a href="{{route('categories.index')}}" type="button" class="btn btn-alt-secondary mr-1 mb-3">
+              <a href="{{route('cities.index')}}" type="button" class="btn btn-alt-secondary mr-1 mb-3">
                 <i class="far fa-arrow-alt-circle-right opacity-50-b mr-1"></i>
                 رجوع
               </a>
@@ -56,19 +56,19 @@
                 <tr style="font-size: 0.9rem">
                   <th scope="row">
                     <label for="name">
-                          اسم الفئة
+                          اسم المدينة
                     </label>
                   </th>
                   <td class="font-w600">
                     <input  class="form-control  unset"
                             name="name" type="text"
-                            value="{{$cat->name}}"
-                            id="name" placeholder="يكتب اسم الفئة">
+                            value="{{$city->name}}"
+                            id="name" placeholder="يكتب اسم المدينة">
                   </td>
                 </tr>
                 <tr style="font-size: 0.9rem">
                   <th scope="row">
-                      <label for="desc-maxlength150">وصف الفئة</label>
+                      <label for="desc-maxlength150">وصف المدينة</label>
                   </th>
                   <td class="font-w600">
                       <textarea type="text"
@@ -76,13 +76,13 @@
                                 id="desc-maxlength150"
                                 rows="3"
                                 data-always-show="true"
-                                name="desc" placeholder="الوصف هنا ..." maxlength="150">{{ $cat->desc }}</textarea>
+                                name="desc" placeholder="الوصف هنا ..." maxlength="150">{{ $city->desc }}</textarea>
                   </td>
                 </tr>
                 <tr style="font-size: 0.9rem">
                   <th scope="row">
                     <label for="image">
-                      صورة الفئة
+                      صورة المدينة
                     </label>
                   </th>
                   <td class="font-w600">
@@ -95,7 +95,7 @@
                         <span class="text-danger" style="font-size: 0.7rem">الحجم المسموح هو 1024 كيلوبايت - الملفات المسموح بها JPG, PNG</span>
                       </div>
                       <div class="col-6">
-                        <img src="{{asset("uploads/$cat->image")}}" alt="{{$cat->name}}" style="height: 85px">
+                        <img src="{{asset("uploads/$city->image")}}" alt="{{$city->name}}" style="height: 85px">
                       </div>
                     </div>
                   </td>

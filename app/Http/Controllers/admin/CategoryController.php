@@ -45,12 +45,14 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:100'],
-            'desc' => ['required', 'string', 'max:150']
+            'desc' => ['required', 'string', 'max:150'],
+            'image' => ['nullable', 'image', 'max:1024']
+
         ]);
 
         if ($request->hasFile('image')) {
             if ($category->image !== 'no-image.jpg'){Storage::delete($category->image);}
-            $data['image'] = Storage::put("cats",$request->file('image'));
+            $data['image'] = Storage::put("categories",$request->file('image'));
         }
 
         $category->update($data);

@@ -67,7 +67,7 @@
                 </li>
 
                     <!-- activities -->
-                    <li class="nav-main-item {{ Route::currentRouteName() === 'categories.index' ? 'open' : ''}}">
+                    <li class="nav-main-item">
                         <a class="nav-main-link nav-main-link-submenu " data-toggle="submenu" aria-haspopup="true"
                             aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fas fa-plane"></i>
@@ -75,7 +75,7 @@
                         </a>
                         <ul class="nav-main-submenu">
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="{{route('categories.index')}}">
+                                <a class="nav-main-link" href="{{route('cities.index')}}">
                                     <i class="nav-main-link-icon fas fa-city"></i>
                                     <span class="nav-main-link-name">{{ __('sidebar.cities') }}</span>
                                 </a>
@@ -134,13 +134,6 @@
 {{--                    </li>--}}
 {{--                @endcan--}}
 
-                <!-- Reports -->
-                <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <i class="nav-main-link-icon far fa-flag"></i>
-                        <span class="nav-main-link-name">{{ __('sidebar.pages') }}</span>
-                    </a>
-                </li>
 
 
                 <li class="nav-main-item">
@@ -164,8 +157,17 @@
                       <!-- Home -->
                         <li class="nav-main-item">
                           <a class="nav-main-link" href="#">
-                            <span class="nav-main-link-name">واجهة الموقع</span>
+                              <i class="nav-main-link-icon fas fa-cogs"></i>
+                            <span class="nav-main-link-name">إعدادات</span>
                           </a>
+                        </li>
+
+                        <!-- Pages -->
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="#">
+                                <i class="nav-main-link-icon far fa-flag"></i>
+                                <span class="nav-main-link-name">{{ __('sidebar.pages') }}</span>
+                            </a>
                         </li>
 
 {{--                        <li class="nav-main-item">--}}

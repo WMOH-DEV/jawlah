@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\MerchantController;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,4 @@ Route::middleware('auth')->group(function (){
 Route::resource('clients', ClientController::class);
 Route::resource('merchants', MerchantController::class);
 Route::resource('categories', CategoryController::class);
+Route::resource('cities', CityController::class);
