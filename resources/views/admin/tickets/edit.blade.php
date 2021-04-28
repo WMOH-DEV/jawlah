@@ -1,13 +1,13 @@
 @extends('admin.main-layout')
 
-@section('title')تذكرة نشاط جديدة@endsection
+@section('title') تعديل تذكرة {{$ticket->name}}@endsection
 
 @section('content')
 
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title"> تذكرة نشاط جديدة </h3>
+                <h3 class="block-title"> تعديل تذكرة {{$ticket->name}} </h3>
                 <div class="block-options">
                     <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option"
                             data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
@@ -27,8 +27,9 @@
 
             <div class="block-content block-content-full">
 
-                <form action="{{route('tickets.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('tickets.update', $ticket->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="row">
                         <div class="col-sm-12  d-flex ">
                             <a href="{{route('tickets.index')}}" type="button" class="btn btn-alt-secondary mr-1 mb-3">
@@ -59,7 +60,7 @@
                                     <td class="font-w600">
                                         <input class="form-control @error('name') is-invalid @enderror unset"
                                                name="name" type="text"
-                                               value="{{old('name')}}"
+                                               value="{{$ticket->name}}"
                                                id="name" placeholder="اسم النشاط الجديد">
                                     </td>
                                 </tr>
@@ -78,7 +79,7 @@
                                             class="js-select2 form-control @error('category_id') is-invalid @enderror js-select2-enabled">
                                             <option></option>
                                         @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option value="{{$category->id}}" @if($ticket->category_id === $category->id) selected @endif >{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -98,7 +99,7 @@
                                             class="js-select2 form-control @error('city_id') is-invalid @enderror js-select2-enabled">
                                             <option></option>
                                         @foreach($cities as $city)
-                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                                <option value="{{$city->id}}" @if($ticket->city_id === $city->id) selected @endif>{{$city->name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -116,8 +117,8 @@
                                             name="age"
                                             id="age"
                                             class="js-select2 form-control js-select2-enabled">
-                                            <option value="بالغين">بالغين</option>
-                                            <option value="أطفال">أطفال</option>
+                                            <option value="بالغين" @if($ticket->age === 'بالغين') selected @endif>بالغين</option>
+                                            <option value="أطفال" @if($ticket->age === 'أطفال') selected @endif>أطفال</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -134,7 +135,7 @@
                                             <div class="col-8">
                                                 <input class="form-control @error('price') is-invalid @enderror unset"
                                                        name="price" type="text"
-                                                       value="{{old('price')}}"
+                                                       value="{{$ticket->price}}"
                                                        id="price" placeholder="00,00">
                                             </div>
                                             <div class="col-4">
@@ -158,7 +159,7 @@
                                     </th>
                                     <td class="font-w600">
                                         <div class="custom-control custom-switch custom-control-primary custom-control-lg">
-                                            <input type="checkbox" class="custom-control-input" id="vat" name="vat" checked="">
+                                            <input type="checkbox" class="custom-control-input" id="vat" name="vat" @if($ticket->vat) checked="" @endif>
                                             <label class="custom-control-label " for="vat"></label>
                                         </div>
                                     </td>
@@ -176,7 +177,7 @@
                                                class="js-flatpickr form-control bg-white"
                                                id="date_party"
                                                name="date_party"
-                                               value="{{ old('date_party') }}"
+                                               value="{{ $ticket->date_party }}"
                                                placeholder="Y-m-d">
                                     </td>
                                 </tr>
@@ -195,7 +196,7 @@
                                                data-enable-time="true"
                                                data-no-calendar="true"
                                                placeholder="HH:MM"
-                                               value="{{ old('hour_party') }}"
+                                               value="{{ $ticket->hour_party }}"
                                                data-date-format="H:i">
                                     </td>
                                 </tr>
@@ -210,7 +211,7 @@
                                     <td class="font-w600">
                                         <input class="form-control  unset"
                                                name="qty" type="number"
-                                               value="{{old('qty')}}"
+                                               value="{{$ticket->qty}}"
                                                id="qty" placeholder="0">
                                     </td>
                                 </tr>
@@ -247,7 +248,7 @@
                                         </label>
                                     </th>
                                     <td class="font-w600">
-                                        <textarea class="js-summernote" id="desc" name="desc">{{ old('desc') }}</textarea>
+                                        <textarea class="js-summernote" id="desc" name="desc">{{ $ticket->desc }}</textarea>
                                     </td>
                                 </tr>
 
@@ -259,7 +260,7 @@
                                         </label>
                                     </th>
                                     <td class="font-w600">
-                                        <textarea class="js-summernote" id="information" name="information">{{old('information')}}</textarea>
+                                        <textarea class="js-summernote" id="information" name="information">{{$ticket->information}}</textarea>
                                     </td>
                                 </tr>
 
@@ -292,9 +293,6 @@
                                         <span class="text-danger" style="font-size: 0.7rem">الحجم المسموح هو 1024 كيلوبايت -  JPG أو PNG</span>
                                     </td>
                                 </tr>
-
-
-
                                 </tbody>
                             </table>
                         </div>

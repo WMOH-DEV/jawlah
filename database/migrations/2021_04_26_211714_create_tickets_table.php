@@ -22,8 +22,8 @@ class CreateTicketsTable extends Migration
             $table->enum('age',['أطفال', 'بالغين'])->default('بالغين');
             $table->decimal('price',8,2)->default(0);
             $table->boolean('vat')->default(0);
-            $table->text('desc');
-            $table->text('information')->nullable();
+            $table->longText('desc');
+            $table->longText('information')->nullable();
             $table->date('date_party');
             $table->string('hour_party')->default('0');
             $table->integer('qty')->default(0);
