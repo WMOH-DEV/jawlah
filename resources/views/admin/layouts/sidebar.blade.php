@@ -88,7 +88,7 @@
                                     </a>
                                 </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="#">
+                                <a class="nav-main-link" href="{{route('tickets.index')}}">
                                     <i class="nav-main-link-icon fas fa-ticket-alt"></i>
                                     <span class="nav-main-link-name">{{ __('sidebar.tickets') }}</span>
                                 </a>
