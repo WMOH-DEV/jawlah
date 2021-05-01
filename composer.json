@@ -14,7 +14,8 @@
         "livewire/livewire": "^2.4",
         "mckenziearts/laravel-notify": "^2.1",
         "spatie/laravel-permission": "^4.0",
-        "zacksmash/fortify-ui": "^1.4"
+        "zacksmash/fortify-ui": "^1.4",
+      "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

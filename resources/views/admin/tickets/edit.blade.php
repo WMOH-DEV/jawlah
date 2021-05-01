@@ -116,15 +116,15 @@
                                     <!-- price-->
                                     <tr style="font-size: 0.9rem">
                                         <th scope="row">
-                                            <label for="price">
+                                            <label for="price_without_vat">
                                                 السعر بدون ضريبة
                                             </label>
                                         </th>
                                         <td class="font-w600">
                                             <div class="row align-items-center">
                                                 <div class="col-8">
-                                                    <input class="form-control @error('price') is-invalid @enderror unset"
-                                                        name="price" type="text" value="{{ $ticket->price }}" id="price"
+                                                    <input class="form-control @error('price_without_vat') is-invalid @enderror unset"
+                                                        name="price_without_vat" type="text" value="{{ $ticket->price_without_vat }}" id="price_without_vat"
                                                         placeholder="00,00">
                                                 </div>
                                                 <div class="col-4">
@@ -177,7 +177,7 @@
                                         </th>
                                         <td class="font-w600">
                                             <input type="text"
-                                                class="js-flatpickr  @error('price') hour_party @enderror form-control bg-white"
+                                                class="js-flatpickr  @error('hour_party') hour_party @enderror form-control bg-white"
                                                 id="hour_party" name="hour_party" data-enable-time="true"
                                                 data-no-calendar="true" placeholder="HH:MM"
                                                 value="{{ $ticket->hour_party }}" data-date-format="H:i">
@@ -311,6 +311,37 @@
                                             @else
                                                 <input type="file" name="image3" class="form-group dropify"
                                                     data-height="30">
+                                                <span class="text-danger" style="font-size: 0.7rem">الحجم المسموح هو 1024
+                                                    كيلوبايت - JPG أو PNG</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+
+                                    <!-- image 4 -->
+                                    <tr style="font-size: 0.9rem">
+                                        <th scope="row" style="width: 30%">
+                                            <label for="image4">
+                                                صورة اضافية للنشاط <span class="font-size-xs">(غير إلزامية)</span>
+                                            </label>
+                                        </th>
+                                        <td class="font-w600">
+                                            @if ($ticket->image4)
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <input type="file" name="image4" class="form-group dropify"
+                                                               data-height="30">
+                                                        <span class="text-danger" style="font-size: 0.7rem">أقصى حجم
+                                                            1024
+                                                            كيلوبايت - JPG أو PNG</span>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <img src="{{ asset("uploads/$ticket->image4") }}"
+                                                             alt="{{ $ticket->name }}" style="height: 60px">
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <input type="file" name="image4" class="form-group dropify"
+                                                       data-height="30">
                                                 <span class="text-danger" style="font-size: 0.7rem">الحجم المسموح هو 1024
                                                     كيلوبايت - JPG أو PNG</span>
                                             @endif

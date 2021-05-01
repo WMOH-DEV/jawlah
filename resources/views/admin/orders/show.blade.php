@@ -136,33 +136,24 @@
                             </h3>
                         </div>
                         <div class="js-slider slick-nav-black slick-nav-hover responsive" dir="ltr" data-dots="true"
-                             data-arrows="true" data-slides-to-show="2" data-center-mode="true" data-autoplay="true"
-                             data-autoplay-speed="3000">
+                            data-arrows="true" data-slides-to-show="2" data-center-mode="true" data-autoplay="true"
+                            data-autoplay-speed="3000">
                             <div>
                                 <img class="img-fluid" style="height:250px" src="{{ asset("uploads/$ticket->image") }}"
-                                     alt="{{ $ticket->name }}">
+                                    alt="{{ $ticket->name }}">
                             </div>
                             <div>
                                 <img class="img-fluid" style="height:250px" src="{{ asset("uploads/$ticket->image2") }}"
-                                     alt="{{ $ticket->name }}">
+                                    alt="{{ $ticket->name }}">
                             </div>
-                           @if ( $ticket->image3 )
-                                <div>
-                                    <img class="img-fluid" style="height:250px" src="{{ asset("uploads/$ticket->image3") }}"
-                                         alt="{{ $ticket->name }}">
-                                </div>
-                           @endif
-                            @if ($ticket->image4)
-                                <div>
-                                    <img class="img-fluid" style="height:250px"
-                                         src="{{ asset("uploads/$ticket->image4") }}"
-                                         alt="{{ $ticket->name }}">
-                                </div>
-                            @endif
+                            <div>
+                                <img class="img-fluid" style="height:250px" src="{{ asset("uploads/$ticket->image3") }}"
+                                    alt="{{ $ticket->name }}">
+                            </div>
                         </div>
                     </div>
-            @endif
-            <!-- END Slider with multiple images and center mode -->
+                @endif
+                <!-- END Slider with multiple images and center mode -->
 
             </div>
         </div>
@@ -177,7 +168,7 @@
 @section('js')
     <script src="{{ asset('admin/assets') }}/js/plugins/slick-carousel/slick.min.js"></script>
     <script>
-        jQuery(function () {
+        jQuery(function() {
             Dashmix.helpers('slick');
         });
 

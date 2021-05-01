@@ -3,6 +3,7 @@
 .number_ltr {
   direction: ltr !important;
   unicode-bidi: embed;
+    text-align: right;
 }
 html,
 body {
@@ -236,6 +237,41 @@ div.items-start > div:nth-child(3){
 
 .ar-font{
     font-family: 'Droid Arabic Kufi','DroidArabicKufiRegular', serif !important;
+}
+
+.icon-font::after{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    color: rgba(6,101,208,.7);
+}
+
+.whats::after{
+    content: '\f232';
+    font-family: 'Font Awesome 5 Brands';
+
+}
+
+.insta::after{
+    content: '\f16d';
+    font-family: 'Font Awesome 5 Brands';
+
+}
+
+.twitter::after{
+    content: '\f099';
+    font-family: 'Font Awesome 5 Brands';
+
+}
+
+.facebook::after{
+    content: '\f39e';
+    font-family: 'Font Awesome 5 Brands';
+
 }
 
 

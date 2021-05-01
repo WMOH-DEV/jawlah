@@ -96,6 +96,14 @@
                         </ul>
                     </li>
 
+                <!-- Orders -->
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'orders.index' ? 'active' : ''}}" href="{{route('orders.index')}}">
+                        <i class="nav-main-link-icon fas fa-calendar-week"></i>
+                        <span class="nav-main-link-name">{{ __('sidebar.orders') }}</span>
+                    </a>
+                </li>
+
 
                 <li class="nav-main-heading">{{ __('sidebar.admin_sections') }}</li>
 
@@ -156,7 +164,7 @@
 
                       <!-- Home -->
                         <li class="nav-main-item">
-                          <a class="nav-main-link" href="#">
+                          <a class="nav-main-link" href="{{route('settings.index')}}">
                               <i class="nav-main-link-icon fas fa-cogs"></i>
                             <span class="nav-main-link-name">إعدادات</span>
                           </a>
@@ -170,11 +178,6 @@
                             </a>
                         </li>
 
-{{--                        <li class="nav-main-item">--}}
-{{--                            <a class="nav-main-link" href="javascript:void(0)">--}}
-{{--                                <span class="nav-main-link-name">غير متاح في هذا الاصدار</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
                     </ul>
                 </li>
 

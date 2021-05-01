@@ -25,4 +25,5 @@ return [
     'clients' => 'الاعضاء',
     'merchants' => 'التجار',
     'tickets' => 'التذاكر',
+    'orders' => 'الطلبات',
 ];

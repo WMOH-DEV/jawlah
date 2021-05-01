@@ -15,4 +15,28 @@ class Order extends Model
      * @var array
      */
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function ticket()
+    {
+        return $this->belongsTo(Ticket::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('order_number', 'like', $term)
+//                ->orWhere('id', 'like', $term)
+                ->orWhereHas('ticket', function ($q) use ($term) {
+                    $q->where('name', 'like', $term);
+                })->orWhereHas('user', function ($q) use ($term) {
+                    $q->where('name', 'like', $term);
+                });
+        });
+    } // End Search
 }

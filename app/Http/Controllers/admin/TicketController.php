@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\admin\City;
+use App\Models\admin\Setting;
 use App\Models\admin\Ticket;
 use App\Models\admin\Category;
 use App\Http\Controllers\Controller;
@@ -44,8 +45,9 @@ class TicketController extends Controller
             $data['image3'] = Storage::put("tickets", $request->file('image3'));
         }
 
-        //        $vat = Setting::first()->vat;
-        //        $data['price'] = isset($request['vat']) ? $data['price'] * $vat : $data['price'];
+        $vat = Setting::vat();
+
+        $data['price'] = isset($request['vat']) ? ($data['price_without_vat'] * $vat) + $data['price_without_vat'] : $data['price_without_vat'];
 
         $data['vat'] = isset($request['vat']) ? 1 : 0;
 
@@ -90,6 +92,11 @@ class TicketController extends Controller
             }
             $data['image3'] = Storage::put("tickets", $request->file('image3'));
         }
+
+        $vat = Setting::vat();
+
+        $data['price'] = isset($request['vat']) ? ($data['price_without_vat'] * $vat) + $data['price_without_vat'] : $data['price_without_vat'];
+
 
         $data['vat'] = isset($request['vat']) ? 1 : 0;
 

@@ -20,9 +20,10 @@ class CreateTicketsTable extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('age',['أطفال', 'بالغين'])->default('بالغين');
+            $table->decimal('price_without_vat',8,2)->default(0);
             $table->decimal('price',8,2)->default(0);
             $table->boolean('vat')->default(0);
-            $table->longText('desc');
+            $table->longText('desc')->nullable();
             $table->longText('information')->nullable();
             $table->date('date_party');
             $table->string('hour_party')->default('0');

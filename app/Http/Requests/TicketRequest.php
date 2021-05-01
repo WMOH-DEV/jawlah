@@ -24,19 +24,20 @@ class TicketRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name'          => ['bail','required', 'string', 'max:150'],
-            'category_id'   => ['bail','required', 'exists:categories,id'],
-            'city_id'       => ['bail','required', 'exists:cities,id'],
-            'age'           => ['bail','required', 'regex:/^(بالغين|أطفال)$/'],
-            'price'         => ['bail','regex:/^(?:[1-9]\d+|\d)(?:\,\d\d)?$/'],
-            'date_party'    => ['bail','date', 'required'],
-            'hour_party'    => ['bail','required'],
-            'image'         => ['bail','image', 'max:1024'],
-            'image2'        => ['bail','nullable', 'image', 'max:1024'],
-            'image3'        => ['bail','nullable', 'image', 'max:1024'],
-            'qty'           => ['bail','required', 'gt:0'],
-            'desc'          => ['bail','nullable'],
-            'information'   => ['bail','nullable'],
+            'name'                  => ['bail','required', 'string', 'max:150'],
+            'category_id'           => ['bail','required', 'exists:categories,id'],
+            'city_id'               => ['bail','required', 'exists:cities,id'],
+            'age'                   => ['bail','required', 'regex:/^(بالغين|أطفال)$/'],
+            'price_without_vat'     => ['bail','regex:/^(?:[1-9]\d+|\d)(?:\,\d\d)?$/'],
+            'date_party'            => ['bail','date', 'required'],
+            'hour_party'            => ['bail','required'],
+            'image'                 => ['bail','image', 'max:1024'],
+            'image2'                => ['bail','nullable', 'image', 'max:1024'],
+            'image3'                => ['bail','nullable', 'image', 'max:1024'],
+            'image4'                => ['bail','nullable', 'image', 'max:1024'],
+            'qty'                   => ['bail','required', 'gt:0'],
+            'desc'                  => ['bail','nullable'],
+            'information'           => ['bail','nullable'],
         ];
 
         if ($this->getMethod() == 'POST') {
