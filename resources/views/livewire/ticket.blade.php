@@ -41,8 +41,7 @@
                                 wire:click.prevent="deleteSelected"
                                 onclick="confirm('هل أنت متأكد من هذا الإجراء ؟') || event.stopImmediatePropagation()"
                                 class="btn btn-outline-danger mr-1 mb-3 btn-sm">
-                            <i class="fa fa-fw fa-times mr-1"></i> حذف @if (count($checked) > 0) ({{count($checked)}}
-                            ) @endif
+                            <i class="fa fa-fw fa-times mr-1"></i> حذف @if (count($checked) > 0) ({{count($checked)}}) @endif
                         </button>
                     @endif
                 </div>

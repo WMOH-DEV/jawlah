@@ -100,7 +100,9 @@ class Ticket extends Component
     public function render()
     {
         $merchants = \App\Models\admin\Merchant::where('role_id','2')->latest('id')->get();
-        $cities = City::latest('id')->get();
+        $cities = City::has('tickets')->get();
+        $merchants = \App\Models\admin\Merchant::whereHas('tickets', function($q){
+        $q->where('role_id','2');})->get();
         return view('livewire.ticket', ['tickets' => $this->tickets ,
             'merchants' => $merchants,
             'cities' => $cities]);

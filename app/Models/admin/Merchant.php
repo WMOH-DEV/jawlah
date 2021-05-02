@@ -5,6 +5,7 @@ namespace App\Models\admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
 class Merchant extends Model
@@ -29,5 +30,15 @@ class Merchant extends Model
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class,'user_id');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class,'user_id');
     }
 }

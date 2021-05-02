@@ -11,12 +11,12 @@
       </button>
       <!-- END Toggle Sidebar -->
 
-      <!-- Open Search Section -->
-      <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-      <button type="button" class="btn btn-dual" data-toggle="layout" data-action="header_search_on">
-        <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block droid">{{ __('top-nav.search') }}</span>
-      </button>
-      <!-- END Open Search Section -->
+{{--      <!-- Open Search Section -->--}}
+{{--      <!-- Layout API, functionality initialized in Template._uiApiLayout() -->--}}
+{{--      <button type="button" class="btn btn-dual" data-toggle="layout" data-action="header_search_on">--}}
+{{--        <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block droid">{{ __('top-nav.search') }}</span>--}}
+{{--      </button>--}}
+{{--      <!-- END Open Search Section -->--}}
     </div>
     <!-- END Right Section -->
 

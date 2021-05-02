@@ -4,6 +4,7 @@
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ClientController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MerchantController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\SettingController;
@@ -24,7 +25,7 @@ Route::get('/', function(){
 
 Route::middleware('auth')->group(function (){
 
-   // Route::get('/', [HomeController::class, 'HomeView'])->name('admincp.index');
+    Route::get('/', [DashboardController::class, 'HomeView'])->name('admincp.index');
     Route::resource('clients', ClientController::class);
     Route::resource('merchants', MerchantController::class);
     Route::resource('categories', CategoryController::class);

@@ -45,6 +45,10 @@ class TicketController extends Controller
             $data['image3'] = Storage::put("tickets", $request->file('image3'));
         }
 
+        if ($request->hasFile('image4')) {
+            $data['image4'] = Storage::put("tickets", $request->file('image4'));
+        }
+
         $vat = Setting::vat();
 
         $data['price'] = isset($request['vat']) ? ($data['price_without_vat'] * $vat) + $data['price_without_vat'] : $data['price_without_vat'];
@@ -91,6 +95,13 @@ class TicketController extends Controller
                 Storage::delete($ticket->image3);
             }
             $data['image3'] = Storage::put("tickets", $request->file('image3'));
+        }
+
+        if ($request->hasFile('image4')) {
+            if ($ticket->image4 !== 'no-image.jpg') {
+                Storage::delete($ticket->image4);
+            }
+            $data['image4'] = Storage::put("tickets", $request->file('image4'));
         }
 
         $vat = Setting::vat();

@@ -10,7 +10,7 @@ return [
     'sign_in'               => 'تسجيل الدخول',
     'made_by'               => 'تمت البرمجة بكل',
     'by'                    => 'بواسطة',
-    'author'                => 'Wael Mohamed ®',
+    'author'                => 'COPYRIGHTS',
     'site'                  => 'دليل المسافر',
     'author_link'           => 'https://www.fb.com/WaelMohElSaid',
     'latest_requests'       => 'آخر عمليات الشراء',

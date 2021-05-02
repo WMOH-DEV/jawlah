@@ -18,7 +18,7 @@
             <div class="mt-4 mt-md-0">
                 <p class="mb-0">
                     {{ __('global.welcome') }} <span>
-		  auth name
+		  {{auth()->user()->name}}
 		  </span>
                 </p>
             </div>
@@ -96,7 +96,8 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <canvas class="js-chartjs-analytics-bars chartjs-render-monitor" style="display: block; height: 245px; width: 690px;"></canvas>
+                        <canvas class="js-chartjs-analytics-bars chartjs-render-monitor"
+                                style="display: block; height: 245px; width: 690px;"></canvas>
                     </div>
                 </div>
                 <div class="row">
@@ -115,143 +116,36 @@
                             </div>
                             <div class="block-content">
                                 <ul class="timeline">
-                                    <!-- new buy -->
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-default">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
+                                    @foreach($lastOrders as $order)
+                                        <li class="timeline-event">
+                                            <div class="timeline-event-icon bg-danger">
+                                                <i class="fas fa-donate"></i>
+                                            </div>
+                                            <div
+                                                class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
+                                                data-toggle="appear">
+                                                <div class="block-header block-header-default">
+                                                    <div class="head">
+                                                        <h3 class="block-title font-w600" style="font-size: 0.8rem">
+                                                            {{$order->user->name}}
+                                                        </h3>
+                                                        <div class="d-flex justify-between">
+                                                            <span class="font-size-xs">
+                                                                <i class="far fa-envelope"></i>
+                                                                {{$order->user->email}}
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
+                                                    <div class="block-options">
+                                                        <div
+                                                            class="timeline-event-time block-options-item font-size-sm font-w400">
+                                                            {{$order->created_at->diffForHumans()}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <!-- END new buy -->
-
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-info">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-success">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-danger">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <!-- System Event -->
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-dark">
-                                            <i class="fas fa-dollar-sign"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -271,143 +165,40 @@
                             </div>
                             <div class="block-content">
                                 <ul class="timeline">
+
+                                @foreach($lastRegisteredClients as $client)
                                     <!-- new buy -->
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-default">
-                                            <i class="fas fa-user-alt"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
+                                        <li class="timeline-event">
+                                            <div class="timeline-event-icon bg-default">
+                                                <i class="fas fa-user-alt"></i>
+                                            </div>
+                                            <div
+                                                class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
+                                                data-toggle="appear">
+                                                <div class="block-header block-header-default">
+                                                    <div class="head">
+                                                        <h3 class="block-title font-w600" style="font-size: 0.8rem">
+                                                            {{$client->name}}
+                                                        </h3>
+                                                        <div class="d-flex justify-between">
+                                                            <span class="font-size-xs">
+                                                                <i class="far fa-envelope"></i>
+                                                                {{$client->email}}
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
+                                                    <div class="block-options">
+                                                        <div
+                                                            class="timeline-event-time block-options-item font-size-sm font-w400">
+                                                            {{$client->created_at->diffForHumans()}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <!-- END new buy -->
+                                        </li>
+                                        <!-- END new buy -->
+                                    @endforeach
 
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-info">
-                                            <i class="fas fa-user-alt"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-success">
-                                            <i class="fas fa-user-alt"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-danger">
-                                            <i class="fas fa-user-alt"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <!-- System Event -->
-                                    <li class="timeline-event">
-                                        <div class="timeline-event-icon bg-dark">
-                                            <i class="fas fa-user-alt"></i>
-                                        </div>
-                                        <div
-                                            class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
-                                            data-toggle="appear">
-                                            <div class="block-header block-header-default">
-                                                <div class="head">
-                                                    <h3 class="block-title font-w600" style="font-size: 0.8rem">اسم
-                                                        مستخدم هنا</h3>
-                                                    <div class="d-flex justify-between">
-                                                        <span class="font-size-xs">1000#</span>
-                                                        <span class="font-size-xs"><i
-                                                                class="fas fa-map-marker-alt ml-1"></i>الرياض</span>
-                                                    </div>
-                                                </div>
-                                                <div class="block-options">
-                                                    <div
-                                                        class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                        تاريخ الشراء
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -422,11 +213,26 @@
                         <div class="item rounded-lg bg-body-dark mx-auto my-3">
                             <i class="fa fa-users text-muted"></i>
                         </div>
-                        <div class="text-black font-size-h1 font-w700">500</div>
+                        <div class="text-black font-size-h1 font-w700">{{$ordersCount}}</div>
+                        <div class="text-muted mb-3">عدد الطلبات</div>
+                    </div>
+                    <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
+                        <a class="font-w500" href="{{route('orders.index')}}">
+                            {{ __('global.view_all') }}
+                            <i class="fa fa-arrow-left mr-1 opacity-25"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="block block-rounded text-center d-flex flex-column">
+                    <div class="block-content block-content-full flex-grow-1">
+                        <div class="item rounded-lg bg-body-dark mx-auto my-3">
+                            <i class="fa fa-users text-muted"></i>
+                        </div>
+                        <div class="text-black font-size-h1 font-w700">{{$clientsCount}}</div>
                         <div class="text-muted mb-3">{{ __('global.registered_users') }}</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                        <a class="font-w500" href="javascript:void(0)">
+                        <a class="font-w500" href="{{route('clients.index')}}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -437,10 +243,10 @@
                         class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w700 mb-0">
-                                12121
+                                {{$merchantsCount}}
                             </p>
                             <p class="text-muted mb-0">
-                                عدد المستخدمين
+                                عدد التجار
                             </p>
                         </div>
                         <div class="item rounded-lg bg-body-dark">
@@ -449,7 +255,7 @@
                     </div>
                     <div
                         class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                        <a class="font-w500" href="javascript:void(0)">
+                        <a class="font-w500" href="{{route('merchants.index')}}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -460,10 +266,10 @@
                         class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w700 mb-0">
-                                12121
+                                {{$ticketsCount}}
                             </p>
                             <p class="text-muted mb-0">
-                                عدد المستخدمين
+                                عدد التذاكر
                             </p>
                         </div>
                         <div class="item rounded-lg bg-body-dark">
@@ -472,30 +278,7 @@
                     </div>
                     <div
                         class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                        <a class="font-w500" href="javascript:void(0)">
-                            {{ __('global.view_all') }}
-                            <i class="fa fa-arrow-left mr-1 opacity-25"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="block block-rounded">
-                    <div
-                        class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
-                        <div class="mr-3">
-                            <p class="font-size-h3 font-w700 mb-0">
-                                12121
-                            </p>
-                            <p class="text-muted mb-0">
-                                عدد المستخدمين
-                            </p>
-                        </div>
-                        <div class="item rounded-lg bg-body-dark">
-                            <i class="fa fa-check text-muted"></i>
-                        </div>
-                    </div>
-                    <div
-                        class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                        <a class="font-w500" href="javascript:void(0)">
+                        <a class="font-w500" href="{{route('tickets.index')}}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -522,12 +305,12 @@
              */
             static initChartsBars() {
                 // Set Global Chart.js configuration
-                Chart.defaults.global.defaultFontColor              = '#495057';
-                Chart.defaults.scale.gridLines.color                = 'transparent';
-                Chart.defaults.scale.gridLines.zeroLineColor        = 'transparent';
-                Chart.defaults.scale.ticks.beginAtZero              = true;
-                Chart.defaults.global.elements.line.borderWidth     = 1;
-                Chart.defaults.global.legend.labels.boxWidth        = 12;
+                Chart.defaults.global.defaultFontColor = '#495057';
+                Chart.defaults.scale.gridLines.color = 'transparent';
+                Chart.defaults.scale.gridLines.zeroLineColor = 'transparent';
+                Chart.defaults.scale.ticks.beginAtZero = true;
+                Chart.defaults.global.elements.line.borderWidth = 1;
+                Chart.defaults.global.legend.labels.boxWidth = 12;
 
                 // Get Chart Containers
                 let chartBarsCon = jQuery('.js-chartjs-analytics-bars');
@@ -555,14 +338,14 @@
 
                 // Init Chart
                 if (chartBarsCon.length) {
-                    chartBars  = new Chart(chartBarsCon, {
+                    chartBars = new Chart(chartBarsCon, {
                         type: 'bar',
                         data: chartLinesBarsData,
                         options: {
                             tooltips: {
                                 intersect: false,
                                 callbacks: {
-                                    label: function(tooltipItems, data) {
+                                    label: function (tooltipItems, data) {
                                         return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel + ' تذكرة ';
                                     }
                                 }
@@ -582,7 +365,9 @@
         }
 
         // Initialize when page loads
-        jQuery(() => { pageDashboard.init(); });
+        jQuery(() => {
+            pageDashboard.init();
+        });
 
     </script>
     <!-- Page JS Code -->
