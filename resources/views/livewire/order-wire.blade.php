@@ -189,6 +189,12 @@
                                        data-toggle="tooltip" title="" data-original-title="show">
                                         <i class="fa fa-eye"></i>
                                     </a>
+                                    <a href="{{route('orders.print', $order->id)}}" type="button"
+                                       class="btn btn-sm btn-primary js-tooltip-enabled btn-mid"
+                                       data-toggle="tooltip" title="" data-original-title="show">
+                                        <i class="fa fa-print"></i>
+                                    </a>
+
                                     <button type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-left"
                                             title="حذف" data-original-title="delete" data-toggle="modal"
                                             data-target="#modal-delete{{$order->id}}">

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function (){
     Route::resource('categories', CategoryController::class);
     Route::resource('cities', CityController::class);
     Route::resource('tickets', TicketController::class);
+    Route::get('orders/{order}/print', [OrderController::class, 'viewOrder'])->name('orders.print');
     Route::resource('orders', OrderController::class)->except('create', 'store');
     Route::get('settings',[SettingController::class,'index'])->name('settings.index');
     Route::put('settings',[SettingController::class,'update'])->name('settings.update');
