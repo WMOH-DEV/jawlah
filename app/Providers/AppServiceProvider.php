@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Order::created(function ($order) {
-            $order->update(['order_number' => Carbon::now()->format('Ymd') . $order->id]);
+            $order->update(['order_number' => Carbon::now()->format('Ymdhis') . $order->id]);
         });
     }
 }

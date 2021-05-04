@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>{{ $order->order_number }}</title>
-
     <style>
         body {
             font-family: 'XBRiyaz', sans-serif;
@@ -106,24 +105,28 @@
     </style>
 </head>
 
+
+
 <body>
 <div class="invoice-box rtl">
+
     <table cellpadding="0">
         <tr class="top">
             <td colspan="8">
                 <table>
                     <tr>
-                        <td width="65%" class="title">
-                            <img src="{{ asset('images/test-logo.png') }}" style="width:100px; max-width:100px;">
+                        <td width="50%" class="title" style="text-align: center">
+                            <img src="{{ asset("uploads/$home->site_logo") }}" style="height:150px;">
                         </td>
 
-                        <td width="35%">
-                            رقـــم الطلب: {{ $order->order_number }}<br>
+                        <td width="50%" style="text-align: center">
+                            <img src="{{asset("qrcodes/$order->order_number.svg")}}" alt=""><br>
+                            {{ $order->order_number }}<br>
                             تاريخ الطلب: {{ $order->created_at->format('Y-m-d') }}
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-align: center"><h1> طلب رقم {{ $order->order_number }}</h1></td>
+                        <td colspan="2" style="text-align: center"><h1> عدد الأشخاص {{ $order->qty }}</h1></td>
                     </tr>
 
                 </table>
@@ -135,15 +138,19 @@
                 <table>
                     <tr>
                         <td width="50%">
-                            <h2>موقع جهّز</h2>
-                            <h4 dir="ltr">{{$home->phone}}</h4>
-                            <h4>العنوان : {{$home->address}}</h4>
-                            <h4>البريد الإلكتروني : {{$home->email}}</h4>
+                            <h2>{{$home->site_name}}</h2>
+                            <h4 dir="ltr"> {{$home->site_phone}}</h4>
+                            <h4>{{$home->site_web}}</h4>
+                            <h4>{{$home->site_email}}</h4>
+                            @if ($home->vat_id)
+                            <h4>الرقم الضريبي : {{$home->vat_id}}</h4>
+                            @endif
                         </td>
 
                         <td width="50%">
-                            <h2>{{ $order->user->name }}</h2>
+                            <h3>{{ $order->user->name }}</h3>
                             <h4>{{ $order->user->email }}</h4>
+                            <h4>تاريخ الشراء: {{ $order->created_at->format('Y/m/d') }}</h4>
                         </td>
                     </tr>
                 </table>
@@ -159,34 +166,6 @@
             <td style="text-align: center">خصم</td>
             <td style="text-align: center">إجمالي</td>
             <td style="text-align: center">المجموع</td>
-        </tr>
-
-            <tr class="item">
-                <td style="text-align: center">{{ $loop->iteration }}</td>
-                <td style="text-align: center">{{ $item['item_code'] ?? '0000' }}</td>
-                <td style="text-align: center">{{ $item['name']}}</td>
-                <td style="text-align: center">{{ $item->pivot->product_qty }}</td>
-                <td style="text-align: center">{{ $item['init_price'] }}</td>
-                <td style="text-align: center">{{ $item['sell_discount'] }}</td>
-                <td style="text-align: center">{{ $item['sell_price'] }}</td>
-                <td style="text-align: center">{{ $item['sell_price'] * $item->pivot->product_qty}}</td>
-            </tr>
-
-        <tr class="total">
-            <td colspan="6"></td>
-            <td>مجموع المنتجات</td>
-            <td>{{$subtotal}}</td>
-        </tr>
-
-        <tr class="total">
-            <td colspan="6"></td>
-            <td>الخصم</td>
-            <td>{{$discount = $total- $subtotal}}</td>
-        </tr>
-        <tr class="total">
-            <td colspan="6"></td>
-            <td>الإجمالي</td>
-            <td>{{$total}}</td>
         </tr>
     </table>
 </div>

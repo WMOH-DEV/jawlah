@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'أدمن',]);
         $user = User::create([
             'name' => 'Wael',
-            'email' => 'wael@traveller.com',
-            'password' => \Hash::make('waeltraveller'),
+            'email' => 'wael@traveler.com',
+            'password' => \Hash::make('waeltraveler'),
             'phone' => '12345678',
             'email_verified_at' => now(),
             'role_id' => '3',
