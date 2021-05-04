@@ -26,7 +26,7 @@ class OrderFactory extends Factory
             'user_id' => $this->faker->numberBetween(1,20),
             'ticket_id' => $this->faker->numberBetween(1,20),
             'qty' => $this->faker->numberBetween(10,100),
-            'admin_status' => $this->faker->randomElement(['لم يتم الدفع', 'تم الدفع', 'حالة الطلب']),
+            'admin_status' => $this->faker->randomElement(['لم يتم الدفع', 'تم الدفع']),
             'payment_method' => $this->faker->randomElement(['أونلاين', 'الدفع عند الاستلام']),
             'total' => $this->faker->numberBetween(150,999),
         ];

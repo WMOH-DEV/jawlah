@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MerchantController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\Pagecontroller;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function (){
     Route::resource('orders', OrderController::class)->except('create', 'store');
     Route::get('settings',[SettingController::class,'index'])->name('settings.index');
     Route::put('settings',[SettingController::class,'update'])->name('settings.update');
+    Route::resource('pages', PageController::class);
+
 
 
 });

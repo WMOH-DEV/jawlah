@@ -42,7 +42,7 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="/admincp">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'admincp.index' ? 'active' : ''}}" href="{{route('admincp.index')}}">
                         <i class="nav-main-link-icon fa fa-home"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.main_page') }}</span>
                     </a>
@@ -172,7 +172,7 @@
 
                         <!-- Pages -->
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="#">
+                            <a class="nav-main-link" href="{{route('pages.index')}}">
                                 <i class="nav-main-link-icon far fa-flag"></i>
                                 <span class="nav-main-link-name">{{ __('sidebar.pages') }}</span>
                             </a>
@@ -215,7 +215,7 @@
 
 
             <div class="nav-main-item go_to_site">
-                <a  href="#">
+                <a  href="{{url('/')}}" target="_blank">
                     <i class="nav-main-link-icon fas fa-globe"></i>
                     <span class="nav-main-link-name" style="color: #0A63A5">{{ __('sidebar.go_to_site') }}</span>
                 </a>

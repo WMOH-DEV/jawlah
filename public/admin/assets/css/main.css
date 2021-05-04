@@ -253,7 +253,6 @@ div.items-start > div:nth-child(3){
 .whats::after{
     content: '\f232';
     font-family: 'Font Awesome 5 Brands';
-
 }
 
 .insta::after{
@@ -272,6 +271,10 @@ div.items-start > div:nth-child(3){
     content: '\f39e';
     font-family: 'Font Awesome 5 Brands';
 
+}
+
+.note-editable{
+    font-weight: normal !important;
 }
 
 
