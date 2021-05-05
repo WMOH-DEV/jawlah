@@ -167,6 +167,9 @@ return [
          */
         Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Alkoumi\LaravelHijriDate\LaravelHijriDateServiceProvider::class,
+        Alkoumi\LaravelArabicTafqeet\LaravelArabicTafqeetServiceProvider::class,
+
 
         /*
          * Application Service Providers...

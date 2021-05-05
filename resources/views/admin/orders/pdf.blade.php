@@ -57,7 +57,7 @@
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.item td{
+        .invoice-box table tr.item td {
             border-bottom: 1px solid #eee;
         }
 
@@ -106,7 +106,6 @@
 </head>
 
 
-
 <body>
 <div class="invoice-box rtl">
 
@@ -143,30 +142,100 @@
                             <h4>{{$home->site_web}}</h4>
                             <h4>{{$home->site_email}}</h4>
                             @if ($home->vat_id)
-                            <h4>الرقم الضريبي : {{$home->vat_id}}</h4>
+                                <h4>الرقم الضريبي : {{$home->vat_id}}</h4>
                             @endif
                         </td>
 
                         <td width="50%">
                             <h3>{{ $order->user->name }}</h3>
                             <h4>{{ $order->user->email }}</h4>
-                            <h4>تاريخ الشراء: {{ $order->created_at->format('Y/m/d') }}</h4>
+                            <h4>تاريخ الشراء: {{ $hijri }}</h4>
+                            <h4></h4>
                         </td>
                     </tr>
                 </table>
             </td>
         </tr>
 
-        <tr class="heading">
-            <td></td>
-            <td style="text-align: center">كود المنتج</td>
-            <td style="text-align: center">اسم المنتج</td>
-            <td style="text-align: center">الكمية</td>
-            <td style="text-align: center">سعر الوحدة</td>
-            <td style="text-align: center">خصم</td>
-            <td style="text-align: center">إجمالي</td>
-            <td style="text-align: center">المجموع</td>
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%; font-size:20px">
+                اسم النشاط
+            </th>
+            <td class="font-w600" style="font-size:20px">
+                {{$order->ticket->name}}
+            </td>
         </tr>
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%"  style="font-size:20px">
+                تاريخ النشاط
+            </th>
+            <td class="font-w600"  style="font-size:20px">
+                {{$party_hijri}} - ( {{$order->ticket->date_party}} )
+            </td>
+        </tr>
+
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%"  style="font-size:20px">
+                المدينة
+            </th>
+            <td class="font-w600"  style="font-size:20px">
+                {{$order->ticket->city->name}}
+            </td>
+        </tr>
+
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%"  style="font-size:20px">
+                الموعد
+            </th>
+            <td class="font-w600"  style="font-size:20px">
+                {{$order->ticket->hour_party}}
+            </td>
+        </tr>
+
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%"  style="font-size:20px">
+                عدد الاشخاص
+            </th>
+            <td class="font-w600"  style="font-size:20px">
+                {{$order->qty}}
+            </td>
+        </tr>
+
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%"  style="font-size:20px">
+                المبلغ الاجمالي
+            </th>
+            <td class="font-w600"  style="font-size:20px">
+                {{$order->total}} ({{$totalInArabic}})
+            </td>
+        </tr>
+
+        <tr style="font-size: 1.1rem">
+            <th scope="row" style="width: 30%"  style="font-size:20px">
+              الضريبة
+            </th>
+            <td class="font-w600"  style="font-size:20px">
+                {{$order->ticket->vat ? "مطبقة" : "غير مطبقة"}}
+            </td>
+        </tr>
+
+
+
+        <htmlpagefooter name="page-footer">
+            <div style="text-align: center">
+                <table style="width: 100%; margin: auto; text-align: center">
+                    <tr>
+                        <td>{{$home->facebook}}</td>
+                        <td>{{$home->twitter}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$home->site_web}}</td>
+                        <td>{{$home->site_email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </htmlpagefooter>
+
     </table>
 </div>
 </body>
