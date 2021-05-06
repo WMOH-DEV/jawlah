@@ -178,6 +178,14 @@
                             </a>
                         </li>
 
+                        <!-- comments -->
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{route('comments.index')}}">
+                                <i class="nav-main-link-icon far fa-comment"></i>
+                                <span class="nav-main-link-name">{{ __('sidebar.comments') }}</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 

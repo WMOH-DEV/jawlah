@@ -21,23 +21,24 @@ class OrderController extends Controller
 
     public function viewOrder(Order $order)
     {
-
-
         $home = Setting::first();
         $orderNumber = $order->order_number;
         // $number = rand();
         QrCode::size(150)->generate("$orderNumber", public_path("qrcodes/$order->order_number.svg"));
         $order_date = $order->created_at;
-        $data['hijri'] = Hijri::Date('l ، j F ، Y',$order_date);
+        $hijri = Hijri::Date('l ، j F ، Y',$order_date);
+        $data['hijri'] = $hijri;
         $pt_date = $order->ticket->date_party;
+        $party_hijri = Hijri::Date('l ، j F ، Y', $pt_date);
         $data['party_hijri'] = Hijri::Date('l ، j F ، Y', $pt_date);
         $data['order']  = $order;
         $data['home']   = $home;
-        $data['totalInArabic'] = Tafqeet::inArabic($order->total);
+        $totalInArabic = Tafqeet::inArabic($order->total);
+        $data['totalInArabic'] = $totalInArabic;
 
-        // return view('admin.orders.pdf', compact('order', 'home'));
+        // return view('admin.orders.test', compact('order', 'home','hijri','totalInArabic','party_hijri'));
 
-        $pdf = PDF::loadView('admin.orders.pdf', $data);
+        $pdf = PDF::loadView('admin.orders.test', $data);
 
         return $pdf->stream($order->order_number.".pdf");
     } // End view Order

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\admin\Category;
 use App\Models\admin\City;
+use App\Models\admin\Comment;
 use App\Models\admin\Order;
 use App\Models\admin\Role;
 use App\Models\admin\Setting;
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         City::factory()->count(50)->create();
         Ticket::factory()->count(50)->create();
         Order::factory()->count(50)->create();
+        Comment::factory()->count(50)->create();
         Setting::create([
             'site_name' => 'دليل المسافر',
         ]);

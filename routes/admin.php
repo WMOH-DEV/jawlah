@@ -4,6 +4,7 @@
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ClientController;
+use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MerchantController;
 use App\Http\Controllers\admin\OrderController;
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function (){
     Route::get('settings',[SettingController::class,'index'])->name('settings.index');
     Route::put('settings',[SettingController::class,'update'])->name('settings.update');
     Route::resource('pages', PageController::class);
+    Route::resource('comments', CommentController::class)->except('create','store');
 
 
 
