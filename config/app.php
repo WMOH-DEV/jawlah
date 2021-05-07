@@ -169,6 +169,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Alkoumi\LaravelHijriDate\LaravelHijriDateServiceProvider::class,
         Alkoumi\LaravelArabicTafqeet\LaravelArabicTafqeetServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
+
 
 
         /*
@@ -235,6 +237,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
          'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+        'Adate' => Jenssegers\Date\Date::class,
+
     ],
 
 ];

@@ -9,6 +9,7 @@ use App\Models\admin\Order;
 use App\Models\admin\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Jenssegers\Date\Date;
 use PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -36,9 +37,15 @@ class OrderController extends Controller
         $totalInArabic = Tafqeet::inArabic($order->total);
         $data['totalInArabic'] = $totalInArabic;
 
+        Date::setLocale('ar');
+        $data['date'] = Date::parse($order->ticket->date_party)->format('l j F Y');
         // return view('admin.orders.test', compact('order', 'home','hijri','totalInArabic','party_hijri'));
 
-        $pdf = PDF::loadView('admin.orders.test', $data);
+        $price = floatval($order->ticket->price);
+        $price_without_vat = floatval($order->ticket->price_without_vat);
+        $data['vat'] = $price - $price_without_vat;
+
+        $pdf = PDF::loadView('admin.orders.ticket', $data);
 
         return $pdf->stream($order->order_number.".pdf");
     } // End view Order

@@ -29,24 +29,24 @@ class Ticket extends Model
     public function getPriceAttribute($value)
     {
        // return str_replace('.', ',', $value);
-        return str_replace(',0', '', number_format($value, 1, ',', ''));
+        return str_replace('.0', '', number_format($value, 1, '.', ''));
     }
 
     public function getPriceWithoutVatAttribute($value)
     {
         // return str_replace('.', ',', $value);
-        return str_replace(',0', '', number_format($value, 1, ',', ''));
+        return str_replace('.0', '', number_format($value, 1, '.', ''));
     }
 
-    public function setPriceAttribute($value)
-    {
-        $this->attributes['price'] = str_replace(',', '.', $value);
-    }
-
-    public function setPriceWithoutVatAtAttribute($value)
-    {
-        $this->attributes['price_without_vat'] = str_replace(',', '.', $value);
-    }
+//    public function setPriceAttribute($value)
+//    {
+//        $this->attributes['price'] = str_replace(',', '.', $value);
+//    }
+//
+//    public function setPriceWithoutVatAtAttribute($value)
+//    {
+//        $this->attributes['price_without_vat'] = str_replace(',', '.', $value);
+//    }
 
     public function scopeSearch($query, $term)
     {

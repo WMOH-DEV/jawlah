@@ -143,6 +143,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/carlos-meneses/laravel-mpdf" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/simplesoftwareio/simple-qrcode" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/alkoumi/laravel-arabic-tafqeet" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jenssegers/date" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

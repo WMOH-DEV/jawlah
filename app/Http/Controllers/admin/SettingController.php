@@ -27,12 +27,14 @@ class SettingController extends Controller
             'site_logo'     => ['bail', 'image', 'max:1024'],
             'site_web'      => ['bail', 'nullable', 'string', 'url'],
             'site_email'    => ['bail', 'nullable', 'email'],
+            'covid19'       => ['bail', 'nullable', 'string','max:1200'],
+            'terms'         => ['bail', 'nullable', 'string', 'max:1300'],
             'site_phone'    => ['bail', 'nullable', 'max:20'],
             'vat_rate'      => ['bail', 'required', 'numeric','gt:0'],
             'vat_id'        => ['bail', 'nullable', 'numeric'],
-            'facebook'      => ['bail', 'nullable', 'url'],
-            'twitter'       => ['bail', 'nullable', 'url'],
-            'instagram'     => ['bail', 'nullable', 'url'],
+            'facebook'      => ['bail', 'nullable', 'string'],
+            'twitter'       => ['bail', 'nullable', 'string'],
+            'instagram'     => ['bail', 'nullable', 'string'],
             'whatsapp'      => ['bail', 'nullable', 'max:50'],
         ]);
 

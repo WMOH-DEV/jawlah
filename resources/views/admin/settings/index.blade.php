@@ -31,8 +31,7 @@
                 <div class="block-content block-content-full">
                 <div class="row">
                     <div class="col-sm-12  d-flex ">
-{{--                        TODO // change route --}}
-                        <a href="{{route('tickets.index')}}" type="button" class="btn btn-alt-secondary mr-1 mb-3">
+                        <a href="{{route('admincp.index')}}" type="button" class="btn btn-alt-secondary mr-1 mb-3">
                             <i class="far fa-arrow-alt-circle-right opacity-50-b mr-1"></i>
                             رجوع
                         </a>
@@ -254,7 +253,45 @@
                         </table>
                     </div>
                 </div>
-                <span class="text-danger font-size-xs"> * جميع الحقول غير إلزامية عدا اسم الموقع، اذا كنت لا تريد اظهار أي معلومة، فقط عليك بتركها فارغه.</span>
+                    <div class="row">
+                        <div class="table-responsive col-12">
+                            <table class="table table-bordered table-striped table-vcenter no-footer">
+                                <tbody>
+                                <tr style="font-size: 0.9rem">
+                                    <th scope="row" style="width: 20%">
+                                        <label for="covid19">
+                                            شروط وأحكام كوفيد
+                                        </label>
+                                    </th>
+                                    <td class="font-w600">
+                                        <div class="icon-font covid position-relative">
+                                            <textarea class="form-control @error('covid19') is-invalid @enderror unset"
+                                                      name="covid19" type="text"
+                                                      id="covid19" placeholder="شروط وأحكام كوفيد">{{ $setting->covid19 }}</textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style="font-size: 0.9rem">
+                                    <th scope="row" style="width: 20%">
+                                        <label for="terms">
+                                            الشروط والأحكام
+                                        </label>
+                                    </th>
+                                    <td class="font-w600">
+                                        <div class="icon-font terms position-relative">
+                                            <textarea class="form-control @error('terms') is-invalid @enderror unset"
+                                                   name="terms" type="text"
+                                                      id="terms" placeholder="الشروط والأحكام">{{ $setting->terms }}</textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <span class="text-danger font-size-xs"> * جميع الحقول غير إلزامية عدا اسم الموقع، اذا كنت لا تريد اظهار أي معلومة، فقط عليك بتركها فارغه.</span>
             </div>
             </form>
         </div>
