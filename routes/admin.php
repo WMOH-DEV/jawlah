@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\admin\ClientController;
@@ -40,8 +41,9 @@ Route::middleware('auth')->group(function (){
     Route::resource('pages', PageController::class);
     Route::resource('comments', CommentController::class)->except('create','store');
 
-
-
+    Route::get('profile',[AuthController::class, 'edit'])->name('adminProfile.edit');
+    Route::put('profile/info',[AuthController::class, 'update'])->name('adminProfile.info');
+    Route::put('profile/password',[AuthController::class, 'changePassword'])->name('adminProfile.password');
 });
 
 

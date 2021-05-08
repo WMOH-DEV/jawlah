@@ -201,7 +201,7 @@
                                        data-toggle="tooltip" title="" data-original-title="show">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="{{route('orders.print', $order->id)}}" type="button"
+                                    <a href="{{route('orders.print', $order->id)}}" target="_blank" type="button"
                                        class="btn btn-sm btn-primary js-tooltip-enabled btn-mid"
                                        data-toggle="tooltip" title="" data-original-title="show">
                                         <i class="fa fa-print"></i>

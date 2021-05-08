@@ -32,6 +32,10 @@
       if ($("#sessionMsg")) {
           $("#sessionMsg").delay(6000).slideUp(1500);
       }
+      if ($("#errorMsg")) {
+          $("#errorMsg").delay(6000).slideUp(1500);
+      }
+
     if (!$('.inset-0')) {
       return;
     }

@@ -26,7 +26,7 @@
       <div class="dropdown d-inline-block">
         <button type="button" class="btn btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-fw fa-user d-sm-none"></i>
-          <span class="d-none d-sm-inline-block"> auth </span>
+          <span class="d-none d-sm-inline-block"> {{auth()->user()->name}} </span>
           <i class="fa fa-fw fa-angle-down mr-1 d-none d-sm-inline-block"></i>
         </button>
         <div class="dropdown-menu p-0" aria-labelledby="page-header-user-dropdown">
@@ -34,24 +34,24 @@
             {{ __('top-nav.user_option') }}
           </div>
           <div class="p-2 text-right">
-            <a class="dropdown-item" href="javascript:void(0)">
+            <a class="dropdown-item" href="{{route('adminProfile.edit')}}">
               <i class="far fa-fw fa-user ml-1"></i> {{ __('top-nav.profile') }}
             </a>
             <div role="separator" class="dropdown-divider"></div>
 
-            <!-- Toggle Side Overlay -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-              <i class="far fa-fw fa-building ml-1"></i> {{ __('top-nav.settings') }}
-            </a>
-            <!-- END Side Overlay -->
+{{--            <!-- Toggle Side Overlay -->--}}
+{{--            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->--}}
+{{--            <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">--}}
+{{--              <i class="far fa-fw fa-building ml-1"></i> {{ __('top-nav.settings') }}--}}
+{{--            </a>--}}
+{{--            <!-- END Side Overlay -->--}}
 
-            <div role="separator" class="dropdown-divider"></div>
+{{--            <div role="separator" class="dropdown-divider"></div>--}}
             <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="#route('logout')">
               <i class="far fa-fw fa-arrow-alt-circle-left ml-1"></i> {{ __('top-nav.sign_out') }}
             </a>
 
-            <form id="logout-form" action="#route('logout')" method="POST">
+            <form id="logout-form" action="{{route('logout')}}" method="POST">
               @csrf
             </form>
 

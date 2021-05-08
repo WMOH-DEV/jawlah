@@ -6,6 +6,7 @@
 <!-- Main Container -->
   <main id="main-container">
     <x:notify-messages />
+      <x-error />
     <x-alert />
     @yield('content')
 
