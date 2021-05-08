@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MerchantController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\Pagecontroller;
+use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,13 @@ Route::middleware('auth')->group(function (){
     Route::get('profile',[AuthController::class, 'edit'])->name('adminProfile.edit');
     Route::put('profile/info',[AuthController::class, 'update'])->name('adminProfile.info');
     Route::put('profile/password',[AuthController::class, 'changePassword'])->name('adminProfile.password');
+
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+
+    Route::get('statisticsAjax', [ReportController::class, 'statisticsAjax'])->name('orders.ajax');
+    Route::get('usersAjax', [ReportController::class, 'usersAjax'])->name('users.ajax');
+    Route::get('SaleAjax', [ReportController::class, 'saleAjax'])->name('sales.ajax');
+
 });
 
 

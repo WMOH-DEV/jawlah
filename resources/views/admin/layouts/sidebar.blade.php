@@ -145,7 +145,7 @@
 
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'reports.index' ? 'active' : ''}}" href="{{route('reports.index')}}">
                         <i class="nav-main-link-icon far fa-copy"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.reports') }}</span>
                     </a>
