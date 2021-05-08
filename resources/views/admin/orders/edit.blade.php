@@ -1,6 +1,6 @@
 @extends('admin.main-layout')
 
-@section('title')مشاهدة {{$order->order_number}}@endsection
+@section('title')تعديل {{$order->order_number}}@endsection
 
 
 @section('content')
@@ -17,7 +17,7 @@
                     <a class="nav-link" href="#customer-details">بيانات العميل</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#order-status"> حالة الطلب</a>
+                    <a class="nav-link" href="#order-status">تعديل حالة الطلب</a>
                 </li>
                 <li class="nav-item mr-auto">
                     <div class="block-options pl-2 pr-3">
@@ -200,6 +200,9 @@
                 </div>
                 <!-- Status -->
                 <div class="tab-pane fade fade-right" id="order-status" role="tabpanel">
+                    <form action="{{route('orders.update', $order->id)}}" method="post">
+                    @csrf
+                    @method('put')
                     <!-- buttons -->
                         <div class="row">
                             <div class="col-sm-12  d-flex ">
@@ -208,11 +211,11 @@
                                     <i class="far fa-arrow-alt-circle-right opacity-50-b mr-1"></i>
                                     رجوع
                                 </a>
-                                <a href="{{route('orders.edit', $order->id)}}" type="submit"
+                                <button type="submit"
                                         class="btn btn-alt-info mr-1 mb-3">
-                                    <i class="far fa-edit opacity-50 mr-1"></i>
-                                    تعديل
-                                </a>
+                                    <i class="far fa-save opacity-50 mr-1"></i>
+                                    حفظ
+                                </button>
                             </div>
                         </div>
 
@@ -227,7 +230,17 @@
                                         </th>
                                         <td class="font-w600">
                                             <div class="select w-25">
-                                               {{$order->admin_status}}
+                                                <select name="admin_status" id="admin_status"
+                                                        class="js-select2 form-control @error('admin_status') is-invalid @enderror js-select2-enabled">
+                                                    <option value="تم الدفع"
+                                                            @if ($order->admin_status === 'تم الدفع') selected @endif>
+                                                        تم الدفع
+                                                    </option>
+                                                    <option value=" لم يتم الدفع"
+                                                            @if ($order->admin_status === 'لم يتم الدفع') selected @endif>
+                                                        لم يتم الدفع
+                                                    </option>
+                                                </select>
                                             </div>
                                         </td>
                                     </tr>
@@ -236,6 +249,7 @@
                                 </table>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
         </div>

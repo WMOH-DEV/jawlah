@@ -50,4 +50,27 @@ class OrderController extends Controller
         return $pdf->stream($order->order_number.".pdf");
     } // End view Order
 
+    public function edit(Order $order)
+    {
+        return view('admin.orders.edit', compact('order'));
+    }
+
+    public function update(Request $request, Order $order)
+    {
+        $data = $request->validate([
+            'admin_status' => ['bail', 'required', 'regex:/^(تم الدفع|لم يتم الدفع)$/']
+        ]);
+
+        $order->update($data);
+        notify('حفظ البيانات', 'تم بنجاح');
+
+        return redirect(route('orders.index'));
+    } // End update
+
+    public function show(Order $order)
+    {
+        return view('admin.orders.show', compact('order'));
+
+    }
+
 } // End Controller

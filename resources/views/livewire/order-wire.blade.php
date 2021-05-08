@@ -173,18 +173,30 @@
                             <td class="text-center">{{ $order->ticket->name }}</td>
                             <td class="text-center">{{ $order->qty }}</td>
                             <td class="text-center">{{ $order->total }}</td>
-                            <td class="text-center">{{ $order->payment_method }}</td>
-                            <td class="text-center">{{ $order->admin_status }}</td>
+                            <td class="text-center">
+                                @if ($order->payment_method == "الدفع عند الاستلام")
+                                    <span class="badge badge-pill badge-secondary">الدفع عند الاستلام</span>
+                                @else
+                                    <span class="badge badge-pill badge-info">أونلاين</span>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if ($order->admin_status == "تم الدفع")
+                                    <span class="badge badge-pill badge-primary">تم الدفع <i class="fa fa-fw fa-check"></i> </span>
+                                @else
+                                    <span class="badge badge-pill badge-danger">لم يتم الدفع <i class="fa fa-fw fa-times-circle"></i> </span>
+                                @endif
+                            </td>
                             <td class="text-center">{{ $order->created_at->format('Y-m-d') }}</td>
                             <!-- Actions -->
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="{{route('tickets.edit', $order->id)}}" type="button"
+                                    <a href="{{route('orders.edit', $order->id)}}" type="button"
                                        class="btn btn-sm btn-primary js-tooltip-enabled btn-right"
                                        data-toggle="tooltip" title="" data-original-title="Edit">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <a href="{{route('tickets.show', $order->id)}}" type="button"
+                                    <a href="{{route('orders.show', $order->id)}}" type="button"
                                        class="btn btn-sm btn-primary js-tooltip-enabled btn-mid"
                                        data-toggle="tooltip" title="" data-original-title="show">
                                         <i class="fa fa-eye"></i>
