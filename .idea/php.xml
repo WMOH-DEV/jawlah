@@ -138,6 +138,7 @@
       <path value="$PROJECT_DIR$/vendor/alkoumi/laravel-hijri-date" />
       <path value="$PROJECT_DIR$/vendor/alkoumi/laravel-arabic-tafqeet" />
       <path value="$PROJECT_DIR$/vendor/jenssegers/date" />
+      <path value="$PROJECT_DIR$/vendor/laraveldaily/laravel-charts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

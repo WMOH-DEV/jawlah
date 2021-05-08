@@ -96,8 +96,13 @@
                         </div>
                     </div>
                     <div class="block-content">
-                        <canvas class="js-chartjs-analytics-bars chartjs-render-monitor"
-                                style="display: block; height: 245px; width: 690px;"></canvas>
+{{--                        <canvas class="js-chartjs-analytics-bars chartjs-render-monitor"--}}
+{{--                                style="display: block; height: 245px; width: 690px;"></canvas>--}}
+
+
+                        <h5 class="text-center">{{ $chart->options['chart_title'] }}</h5>
+                        {!! $chart->renderHtml() !!}
+
                     </div>
                 </div>
                 <div class="row">
@@ -295,7 +300,8 @@
 @section('js')
     <script src="{{asset('admin/assets')}}/js/plugins/chart.js/Chart.bundle.min.js"></script>
 
-
+    {!! $chart->renderChartJsLibrary() !!}
+    {!! $chart->renderJs() !!}
 
     <script>
         class pageDashboard {

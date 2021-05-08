@@ -29,6 +29,7 @@ class OrderFactory extends Factory
             'admin_status' => $this->faker->randomElement(['لم يتم الدفع', 'تم الدفع']),
             'payment_method' => $this->faker->randomElement(['أونلاين', 'الدفع عند الاستلام']),
             'total' => $this->faker->numberBetween(150,999),
+            'created_at' => $this->faker->dateTimeThisYear(),
         ];
     }
 }
