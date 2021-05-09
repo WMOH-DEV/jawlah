@@ -27,7 +27,7 @@ Route::get('/', function(){
 //	Route::view('profile', 'profile.show');
 //});
 
-Route::middleware('auth')->group(function (){
+Route::middleware(['auth','isAdmin'])->group(function (){
 
     Route::get('/', [DashboardController::class, 'HomeView'])->name('admincp.index');
     Route::resource('clients', ClientController::class);

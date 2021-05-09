@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01539b17f0d42c63a600ab7451f9d7b8",
+    "content-hash": "cce2abf2d1a9d127eee0e497783cd1ca",
     "packages": [
         {
             "name": "alkoumi/laravel-arabic-tafqeet",
