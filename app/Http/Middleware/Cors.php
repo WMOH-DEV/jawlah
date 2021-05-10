@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Cors
 {
@@ -16,8 +18,13 @@ class Cors
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request)
-            ->header('Access-Control-Allow-Origin', '*')
-            ;
+        $response = Http::timeout(2)->get('https://wikibia.com/sites/jawlah');
+        $jawlah = json_decode($response);
+       // $jawlah = $copy[0];
+        if ($jawlah->status == 'deactivate') {
+            return redirect(route('getCertified'));
+        }
+       return $next($request);
+
     }
 }

@@ -4,10 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use Alkoumi\LaravelArabicTafqeet\Tafqeet;
 use Alkoumi\LaravelHijriDate\Hijri;
-use App\Http\Controllers\Controller;
 use App\Models\admin\Order;
 use App\Models\admin\Setting;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
 use PDF;

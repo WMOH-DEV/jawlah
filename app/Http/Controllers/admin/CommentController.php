@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Comment;
-use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {

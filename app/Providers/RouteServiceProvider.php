@@ -54,6 +54,8 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
+    public const COPYRIGHTS = '/copy/WAELMOHAMED';
+
     /**
      * Configure the rate limiters for the application.
      *

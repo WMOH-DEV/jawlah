@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\admin\Order;
 use App\Models\admin\Ticket;
 use App\Models\admin\User;
@@ -10,7 +9,6 @@ use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
-    //
 
     public function HomeView()
     {

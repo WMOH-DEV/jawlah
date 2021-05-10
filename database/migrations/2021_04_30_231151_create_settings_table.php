@@ -24,10 +24,13 @@ class CreateSettingsTable extends Migration
             $table->text('terms')->nullable();
             $table->integer('vat_rate')->default(15);
             $table->string('vat_id')->nullable();
-            $table->string('facebook')->nullable()->default('https://www.facebook.com');
-            $table->string('twitter')->nullable()->default('https://www.twitter.com');
-            $table->string('instagram')->nullable()->default('https://www.instagram.com');
+            $table->string('facebook')->nullable()->default('facebook');
+            $table->string('twitter')->nullable()->default('twitter');
+            $table->string('instagram')->nullable()->default('instagram');
             $table->string('whatsapp')->nullable()->default('+96123456789');
+            $table->boolean('active')->default(1);
+            $table->boolean('status')->default(1);
+            $table->string('msg')->nullable();
             $table->timestamps();
         });
     }

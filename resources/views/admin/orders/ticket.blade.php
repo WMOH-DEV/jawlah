@@ -377,11 +377,12 @@
                     <img src="https://img.icons8.com/office/16/000000/whatsapp.png"/>
                     {{$home->whatsapp}}</td>
                 <td>
-                    <img style="height: 15px" src="https://img.icons8.com/android/24/ffffff/twitter.png"/>
+                    <img style="height: 15px" src="{{asset('admin/assets/media/imgs/twitter.png')}}"/>
                     {{$home->twitter}}
-                    <img style="height: 15px" src="https://img.icons8.com/android/24/ffffff/facebook-new.png"/>
+                    <img style="height: 15px" src="{{asset('admin/assets/media/imgs/facebook-new.png')}}"/>
                     {{$home->facebook}}
-                    <img style="height: 15px" src="https://img.icons8.com/ios/64/ffffff/instagram-new--v1.png"/>
+                    <img style="height: 15px" src="{{asset('admin/assets/media/imgs/instagram-new--v1.png')}}"/>
+
                     {{$home->instagram}}
                 </td>
             </tr>

@@ -2,24 +2,13 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\admin\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
-use LicenseBoxAPI;
+
 
 class ClientController extends Controller
 {
-
-//    public function __construct()
-//    {
-//        $api = new LicenseBoxAPI();
-//        $res = $api->verify_license();
-//        if($res['status']!=true){
-//            die('Your license is invalid, please contact support.');
-//        }
-//    }
 
     public function index()
     {

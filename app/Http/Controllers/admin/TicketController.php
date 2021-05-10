@@ -6,7 +6,6 @@ use App\Models\admin\City;
 use App\Models\admin\Setting;
 use App\Models\admin\Ticket;
 use App\Models\admin\Category;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\TicketRequest;
 use Illuminate\Support\Facades\Storage;
 

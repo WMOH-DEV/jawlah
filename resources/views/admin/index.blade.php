@@ -373,19 +373,8 @@
         // Initialize when page loads
         jQuery(() => {
             pageDashboard.init();
-            $.ajax({
-                url: "https://wikibia.com/posts.json",
-                crossDomain: true,
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-                    console.log(data)
-                },
-            });
-
         });
 
     </script>
-    <!-- Page JS Code -->
-    {{--  <script src="{{asset('admin/assets')}}/js/pages/be_pages_dashboard.min.js"></script>--}}
+}
 @endsection

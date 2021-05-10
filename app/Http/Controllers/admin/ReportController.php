@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\admin\Category;
 use App\Models\admin\City;
 use App\Models\admin\Order;
@@ -11,7 +10,6 @@ use App\Models\admin\User;
 use App\Repositories\ReportRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
