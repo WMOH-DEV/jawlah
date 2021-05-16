@@ -19,7 +19,7 @@ class Controller extends BaseController
     {
         $url = URL::current();
 //        TODO Change URL
-        if (strpos($url, 'traveler') !== false) {
+        if (strpos($url, 'jawlah') !== false) {
             die(getenv('MSG'));
         }
         $this->setting = Setting::first();

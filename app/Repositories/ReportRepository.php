@@ -30,12 +30,11 @@ class ReportRepository
 
     public function ordersOfWeek()
     {
-        Carbon::setWeekStartsAt(Carbon::SUNDAY);
-        Carbon::setWeekEndsAt(Carbon::SATURDAY);
 
         $lastWeekOrdersData =  DB::table('orders')
-            ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
             ->select(\Illuminate\Support\Facades\DB::raw('DAY(created_at) as day'), DB::raw('count(*) as total'))
+            ->whereDate('created_at', '>=', Carbon::today()->subWeek())
+            ->whereDate('created_at', '<=', Carbon::today())
             ->groupBy(DB::raw('DAY(created_at)') )
             ->get();
 

@@ -9,7 +9,7 @@ use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MerchantController;
 use App\Http\Controllers\admin\OrderController;
-use App\Http\Controllers\admin\Pagecontroller;
+use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\TicketController;

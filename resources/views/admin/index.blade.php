@@ -18,8 +18,8 @@
             <div class="mt-4 mt-md-0">
                 <p class="mb-0">
                     {{ __('global.welcome') }} <span>
-		  {{auth()->user()->name}}
-		  </span>
+                        {{ auth()->user()->name }}
+                    </span>
                 </p>
             </div>
         </div>
@@ -28,56 +28,6 @@
 
     <!-- Page Content -->
     <div class="content">
-
-        <!-- Store Growth -->
-    {{--        <div class="block block-rounded">--}}
-    {{--            <div class="block-header block-header-default">--}}
-    {{--                <h3 class="block-title" style="font-size: 0.8rem">--}}
-    {{--                    {{ __('global.chart') }} - {{ __('global.upload_subjects') }}--}}
-    {{--                </h3>--}}
-    {{--                <div class="block-options">--}}
-    {{--                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle"--}}
-    {{--                            data-action-mode="demo">--}}
-    {{--                        <i class="si si-refresh"></i>--}}
-    {{--                    </button>--}}
-    {{--                    <button type="button" class="btn-block-option">--}}
-    {{--                        <i class="si si-wrench"></i>--}}
-    {{--                    </button>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="block-content block-content-full">--}}
-    {{--                <div class="row">--}}
-    {{--                    <div class="col-md-5 col-xl-4 d-md-flex align-items-md-center">--}}
-    {{--                        <div class="p-md-2 p-lg-3">--}}
-    {{--                            <div class="py-3">--}}
-    {{--                                <div class="text-black font-size-h1 font-w700">300</div>--}}
-    {{--                                <div class="font-w600"> {{ __('global.new_upload_subjects') }} </div>--}}
-    {{--                                <div class="py-3 d-flex align-items-center">--}}
-    {{--                                    <div class="bg-success-lighter p-2 rounded ml-3">--}}
-    {{--                                        <i class="fa fa-fw fa-arrow-up text-success"></i>--}}
-    {{--                                    </div>--}}
-    {{--                                    <p class="mb-0">--}}
-    {{--                                        هناك زيادة بنسبة <span class="font-w600 text-success">10%</span> في إجمالي--}}
-    {{--                                        استلام الطلبات عن الأسبوع السابق--}}
-    {{--                                    </p>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                    <div class="col-md-7 col-xl-8 d-md-flex align-items-md-center">--}}
-    {{--                        <div class="p-md-2 p-lg-3 w-100">--}}
-    {{--                            <!-- Bars Chart Container -->--}}
-    {{--                            <!-- Chart.js Chart is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _js/pages/be_pages_dashboard.js -->--}}
-    {{--                            <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->--}}
-    {{--                            <canvas class="js-chartjs-analytics-bars chartjs-render-monitor"--}}
-    {{--                                    style="display: block; height: 345px; width: 690px;" width="828"--}}
-    {{--                                    height="414"></canvas>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    <!-- END Growth -->
 
         <!-- Latest Orders + Stats -->
         <div class="row">
@@ -90,18 +40,16 @@
                         </h3>
                         <div class="block-options">
                             <button type="button" class="btn-block-option" data-toggle="block-option"
-                                    data-action="state_toggle" data-action-mode="demo">
+                                data-action="state_toggle" data-action-mode="demo">
                                 <i class="si si-refresh"></i>
                             </button>
                         </div>
                     </div>
                     <div class="block-content">
-{{--                        <canvas class="js-chartjs-analytics-bars chartjs-render-monitor"--}}
-{{--                                style="display: block; height: 245px; width: 690px;"></canvas>--}}
-
-
-                        <h5 class="text-center">{{ $chart->options['chart_title'] }}</h5>
-                        {!! $chart->renderHtml() !!}
+                        <canvas class="js-chartjs-analytics-bars chartjs-render-monitor"
+                            style="display: block; height: 345px; width: 690px;" width="828" height="350"></canvas>
+                        {{-- <h5 class="text-center">{{ $chart->options['chart_title'] }}</h5>
+                        {!! $chart->renderHtml() !!} --}}
 
                     </div>
                 </div>
@@ -114,37 +62,36 @@
                                 </h3>
                                 <div class="block-options">
                                     <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="state_toggle" data-action-mode="demo">
+                                        data-action="state_toggle" data-action-mode="demo">
                                         <i class="si si-refresh"></i>
                                     </button>
                                 </div>
                             </div>
                             <div class="block-content">
                                 <ul class="timeline">
-                                    @foreach($lastOrders as $order)
+                                    @foreach ($lastOrders as $order)
                                         <li class="timeline-event">
                                             <div class="timeline-event-icon bg-danger">
                                                 <i class="fas fa-donate"></i>
                                             </div>
-                                            <div
-                                                class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
+                                            <div class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
                                                 data-toggle="appear">
                                                 <div class="block-header block-header-default">
                                                     <div class="head">
                                                         <h3 class="block-title font-w600" style="font-size: 0.8rem">
-                                                            {{$order->user->name}}
+                                                            {{ $order->user->name }}
                                                         </h3>
                                                         <div class="d-flex justify-between">
                                                             <span class="font-size-xs">
                                                                 <i class="far fa-envelope"></i>
-                                                                {{$order->user->email}}
+                                                                {{ $order->user->email }}
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <div class="block-options">
                                                         <div
                                                             class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                            {{$order->created_at->diffForHumans()}}
+                                                            {{ $order->created_at->diffForHumans() }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -163,7 +110,7 @@
                                 </h3>
                                 <div class="block-options">
                                     <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="state_toggle" data-action-mode="demo">
+                                        data-action="state_toggle" data-action-mode="demo">
                                         <i class="si si-refresh"></i>
                                     </button>
                                 </div>
@@ -171,31 +118,30 @@
                             <div class="block-content">
                                 <ul class="timeline">
 
-                                @foreach($lastRegisteredClients as $client)
-                                    <!-- new buy -->
+                                    @foreach ($lastRegisteredClients as $client)
+                                        <!-- new buy -->
                                         <li class="timeline-event">
                                             <div class="timeline-event-icon bg-default">
                                                 <i class="fas fa-user-alt"></i>
                                             </div>
-                                            <div
-                                                class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
+                                            <div class="timeline-event-block block block-rounded js-appear-enabled animated fadeIn"
                                                 data-toggle="appear">
                                                 <div class="block-header block-header-default">
                                                     <div class="head">
                                                         <h3 class="block-title font-w600" style="font-size: 0.8rem">
-                                                            {{$client->name}}
+                                                            {{ $client->name }}
                                                         </h3>
                                                         <div class="d-flex justify-between">
                                                             <span class="font-size-xs">
                                                                 <i class="far fa-envelope"></i>
-                                                                {{$client->email}}
+                                                                {{ $client->email }}
                                                             </span>
                                                         </div>
                                                     </div>
                                                     <div class="block-options">
                                                         <div
                                                             class="timeline-event-time block-options-item font-size-sm font-w400">
-                                                            {{$client->created_at->diffForHumans()}}
+                                                            {{ $client->created_at->diffForHumans() }}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -218,11 +164,11 @@
                         <div class="item rounded-lg bg-body-dark mx-auto my-3">
                             <i class="fa fa-users text-muted"></i>
                         </div>
-                        <div class="text-black font-size-h1 font-w700">{{$ordersCount}}</div>
+                        <div class="text-black font-size-h1 font-w700">{{ $ordersCount }}</div>
                         <div class="text-muted mb-3">عدد الطلبات</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                        <a class="font-w500" href="{{route('orders.index')}}">
+                        <a class="font-w500" href="{{ route('orders.index') }}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -233,11 +179,11 @@
                         <div class="item rounded-lg bg-body-dark mx-auto my-3">
                             <i class="fa fa-users text-muted"></i>
                         </div>
-                        <div class="text-black font-size-h1 font-w700">{{$clientsCount}}</div>
+                        <div class="text-black font-size-h1 font-w700">{{ $clientsCount }}</div>
                         <div class="text-muted mb-3">{{ __('global.registered_users') }}</div>
                     </div>
                     <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm">
-                        <a class="font-w500" href="{{route('clients.index')}}">
+                        <a class="font-w500" href="{{ route('clients.index') }}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -248,7 +194,7 @@
                         class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w700 mb-0">
-                                {{$merchantsCount}}
+                                {{ $merchantsCount }}
                             </p>
                             <p class="text-muted mb-0">
                                 عدد التجار
@@ -258,9 +204,8 @@
                             <i class="fa fa-check text-muted"></i>
                         </div>
                     </div>
-                    <div
-                        class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                        <a class="font-w500" href="{{route('merchants.index')}}">
+                    <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
+                        <a class="font-w500" href="{{ route('merchants.index') }}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -271,7 +216,7 @@
                         class="block-content block-content-full d-flex justify-content-between align-items-center flex-grow-1">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w700 mb-0">
-                                {{$ticketsCount}}
+                                {{ $ticketsCount }}
                             </p>
                             <p class="text-muted mb-0">
                                 عدد التذاكر
@@ -281,9 +226,8 @@
                             <i class="fa fa-check text-muted"></i>
                         </div>
                     </div>
-                    <div
-                        class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
-                        <a class="font-w500" href="{{route('tickets.index')}}">
+                    <div class="block-content block-content-full block-content-sm bg-body-light font-size-sm text-center">
+                        <a class="font-w500" href="{{ route('tickets.index') }}">
                             {{ __('global.view_all') }}
                             <i class="fa fa-arrow-left mr-1 opacity-25"></i>
                         </a>
@@ -298,7 +242,7 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('admin/assets')}}/js/plugins/chart.js/Chart.bundle.min.js"></script>
+    <script src="{{ asset('admin/assets') }}/js/plugins/chart.js/Chart.bundle.min.js"></script>
 
     {!! $chart->renderChartJsLibrary() !!}
     {!! $chart->renderJs() !!}
@@ -326,20 +270,20 @@
 
                 // Bars Chart Data
                 chartLinesBarsData = {
-                    labels: ['يناير', 'فبراير', 'مارس', 'ابريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوقمبر', 'ديسمبر'],
-                    datasets: [
-                        {
-                            label: 'مبيعات الشهر',
-                            fill: true,
-                            backgroundColor: 'rgba(6, 101, 208, .6)',
-                            borderColor: 'transparent',
-                            pointBackgroundColor: 'rgba(6, 101, 208, 1)',
-                            pointBorderColor: '#fff',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: 'rgba(6, 101, 208, 1)',
-                            data: [23, 60, 59, 20, 59, 56, 73, 20, 15, 3, 60, 33]
-                        }
-                    ]
+                    labels: ['يناير', 'فبراير', 'مارس', 'ابريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر',
+                        'أكتوبر', 'نوقمبر', 'ديسمبر'
+                    ],
+                    datasets: [{
+                        label: 'مبيعات الشهر',
+                        fill: true,
+                        backgroundColor: 'rgba(6, 101, 208, .6)',
+                        borderColor: 'transparent',
+                        pointBackgroundColor: 'rgba(6, 101, 208, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(6, 101, 208, 1)',
+                        data: [23, 60, 59, 20, 59, 56, 73, 20, 15, 3, 60, 33]
+                    }]
                 };
 
                 // Init Chart
@@ -351,8 +295,9 @@
                             tooltips: {
                                 intersect: false,
                                 callbacks: {
-                                    label: function (tooltipItems, data) {
-                                        return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel + ' تذكرة ';
+                                    label: function(tooltipItems, data) {
+                                        return data.datasets[tooltipItems.datasetIndex].label + ': ' +
+                                            tooltipItems.yLabel + ' تذكرة ';
                                     }
                                 }
                             }
@@ -376,5 +321,4 @@
         });
 
     </script>
-}
 @endsection

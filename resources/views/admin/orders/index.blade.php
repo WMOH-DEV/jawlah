@@ -1,7 +1,6 @@
 @extends('admin.main-layout')
 
-@section('title')قائمة الطلبات@endsection
-
+@section('title') قائمة الطلبات@endsection
 
 @section('content') <livewire:order-wire /> @endsection
 

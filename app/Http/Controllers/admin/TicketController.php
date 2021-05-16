@@ -7,6 +7,7 @@ use App\Models\admin\Setting;
 use App\Models\admin\Ticket;
 use App\Models\admin\Category;
 use App\Http\Requests\TicketRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
@@ -54,7 +55,7 @@ class TicketController extends Controller
 
         $data['vat'] = isset($request['vat']) ? 1 : 0;
 
-        $data['user_id'] = 1;
+        $data['user_id'] = Auth::user()->id;
 
         Ticket::create($data);
 
