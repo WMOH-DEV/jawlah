@@ -40,8 +40,8 @@ class SettingController extends Controller
         $setting = $this->system();
 
         if ($request->hasFile('site_logo')) {
-            if ($setting->site_logo !== 'settings/site_logo.png'){Storage::delete($setting->image);}
-            $data['site_logo'] = Storage::put("settings",$request->file('image'));
+            if ($setting->site_logo !== 'settings/site_logo.png'){Storage::delete($setting->site_logo);}
+            $data['site_logo'] = Storage::put("settings",$request->file('site_logo'));
         }
 
         $setting->update($data);

@@ -27,7 +27,7 @@
 
             <div class="block-content block-content-full">
 
-                <form action="{{route('clients.store')}}" method="post">
+                <form action="{{route('merchants.store')}}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12  d-flex ">
