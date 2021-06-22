@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\admin\City;
+use App\Models\admin\Merchant;
 use App\Models\admin\Setting;
 use App\Models\admin\Ticket;
 use App\Models\admin\Category;
@@ -26,7 +27,8 @@ class TicketController extends Controller
     {
         $categories = Category::all();
         $cities = City::all();
-        return view('admin.tickets.create', compact('cities', 'categories'));
+        $merchants = Merchant::where('role_id', '2')->get();
+        return view('admin.tickets.create', compact('cities', 'categories', 'merchants'));
     } // end create
 
     public function store(TicketRequest $request)
@@ -51,11 +53,19 @@ class TicketController extends Controller
 
         $vat = Setting::vat();
 
-        $data['price'] = isset($request['vat']) ? ($data['price_without_vat'] * $vat) + $data['price_without_vat'] : $data['price_without_vat'];
+        $net = $data['price_without_vat'] - $data['discount'];
 
-        $data['vat'] = isset($request['vat']) ? 1 : 0;
+        $data['price']          = isset($request['vat']) ? ($net * $vat) + $net : $data['price_without_vat'];
+        $data['vat']            = isset($request['vat']) ? 1 : 0;
+        $data['special']        = isset($request['special']) ? 1 : 0;
+        $data['photography']    = isset($request['photography']) ? 1 : 0;
+        $data['food']           = isset($request['food']) ? 1 : 0;
+        $data['id_card']        = isset($request['id_card']) ? 1 : 0;
+        $data['trans']          = isset($request['trans']) ? 1 : 0;
+        $data['guide']          = isset($request['guide']) ? 1 : 0;
+        $data['safety']         = isset($request['safety']) ? 1 : 0;
 
-        $data['user_id'] = Auth::user()->id;
+//        $data['user_id'] = Auth::user()->id;
 
         Ticket::create($data);
 
@@ -68,8 +78,8 @@ class TicketController extends Controller
     {
         $categories = Category::all();
         $cities = City::all();
-        // dd($ticket);
-        return view('admin.tickets.edit', compact('cities', 'categories', 'ticket'));
+        $merchants = Merchant::where('role_id', 2)->get();
+        return view('admin.tickets.edit', compact('cities', 'categories', 'ticket','merchants'));
     } // End edit
 
     public function update(Ticket $ticket, TicketRequest $request)
@@ -106,12 +116,18 @@ class TicketController extends Controller
 
         $vat = Setting::vat();
 
-        $data['price'] = isset($request['vat']) ? ($data['price_without_vat'] * $vat) + $data['price_without_vat'] : $data['price_without_vat'];
+        $net = $data['price_without_vat'] - $data['discount'];
 
+        $data['price']          = isset($request['vat']) ? ($net * $vat) + $net : $data['price_without_vat'];
+        $data['vat']            = isset($request['vat']) ? 1 : 0;
+        $data['special']        = isset($request['special']) ? 1 : 0;
+        $data['photography']    = isset($request['photography']) ? 1 : 0;
+        $data['food']           = isset($request['food']) ? 1 : 0;
+        $data['id_card']        = isset($request['id_card']) ? 1 : 0;
+        $data['trans']          = isset($request['trans']) ? 1 : 0;
+        $data['guide']          = isset($request['guide']) ? 1 : 0;
+        $data['safety']         = isset($request['safety']) ? 1 : 0;
 
-        $data['vat'] = isset($request['vat']) ? 1 : 0;
-
-        $data['user_id'] = 1;
 
         $ticket->update($data);
 
@@ -121,5 +137,6 @@ class TicketController extends Controller
 
         // return redirect('admincp/tickets');
     } // End Update
+
 
 } // End controller

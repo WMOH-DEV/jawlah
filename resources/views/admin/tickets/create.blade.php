@@ -77,7 +77,7 @@
                                             id="category_id"
                                             class="js-select2 form-control @error('category_id') is-invalid @enderror js-select2-enabled">
                                             <option></option>
-                                        @foreach($categories as $category)
+                                            @foreach($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
@@ -97,7 +97,7 @@
                                             id="city_id"
                                             class="js-select2 form-control @error('city_id') is-invalid @enderror js-select2-enabled">
                                             <option></option>
-                                        @foreach($cities as $city)
+                                            @foreach($cities as $city)
                                                 <option value="{{$city->id}}">{{$city->name}}</option>
                                             @endforeach
                                         </select>
@@ -132,10 +132,11 @@
                                     <td class="font-w600">
                                         <div class="row align-items-center">
                                             <div class="col-8">
-                                                <input class="form-control @error('price_without_vat') is-invalid @enderror unset"
-                                                       name="price_without_vat" type="text"
-                                                       value="{{old('price_without_vat')}}"
-                                                       id="price_without_vat" placeholder="00,00">
+                                                <input
+                                                    class="form-control @error('price_without_vat') is-invalid @enderror unset"
+                                                    name="price_without_vat" type="text"
+                                                    value="{{old('price_without_vat')}}"
+                                                    id="price_without_vat" placeholder="00,00">
                                             </div>
                                             <div class="col-4">
                                                 <span>ريال سعودي</span>
@@ -144,6 +145,27 @@
                                         </div>
                                     </td>
                                 </tr>
+
+                                <!-- merchant -->
+                                <tr style="font-size: 0.9rem">
+                                    <th scope="row">
+                                        <label for="user_id">
+                                            التاجر
+                                        </label>
+                                    </th>
+                                    <td class="font-w600">
+                                        <select
+                                            name="user_id"
+                                            id="user_id"
+                                            class="js-select2 form-control js-select2-enabled">
+                                            <option ></option>
+                                            @foreach ($merchants as $merchant)
+                                                <option value="{{$merchant->id}}">{{$merchant->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -151,16 +173,18 @@
                         <div class="table-responsive col-12 col-md-6">
                             <table class="table table-bordered table-striped table-vcenter no-footer">
                                 <tbody>
-                                <!-- VAT -->
-                                <tr style="font-size: 0.9rem">
+                                <!-- Discount -->
+                                <tr style="font-size: 0.9rem ;">
                                     <th scope="row" style="width: 30%">
-                                           تطبيق الضريبة
+                                        <label for="discount">
+                                        الخصم <span class="text-danger font-size-xs">(إن وُجد)</span>
+                                        </label>
                                     </th>
                                     <td class="font-w600">
-                                        <div class="custom-control custom-switch custom-control-primary custom-control-lg">
-                                            <input type="checkbox" class="custom-control-input" id="vat" name="vat" checked="">
-                                            <label class="custom-control-label " for="vat"></label>
-                                        </div>
+                                        <input class="form-control  unset"
+                                               name="discount" type="number"
+                                               value="{{old('discount')}}"
+                                               id="discount" placeholder="0">
                                     </td>
                                 </tr>
 
@@ -168,7 +192,7 @@
                                 <tr style="font-size: 0.9rem">
                                     <th scope="row" style="width: 30%">
                                         <label for="date_party">
-                                            تاريخ النشاط
+                                            تاريخ بداية النشاط
                                         </label>
                                     </th>
                                     <td class="font-w600">
@@ -181,6 +205,23 @@
                                     </td>
                                 </tr>
 
+                                <!-- Date 2 -->
+                                <tr style="font-size: 0.9rem">
+                                    <th scope="row" style="width: 30%">
+                                        <label for="last_day" style="font-size: 0.86rem;">
+                                            تاريخ نهاية النشاط
+                                        </label>
+                                    </th>
+                                    <td class="font-w600">
+                                        <input type="text"
+                                               class="js-flatpickr form-control bg-white"
+                                               id="last_day"
+                                               name="last_day"
+                                               value="{{ old('last_day') }}"
+                                               placeholder="Y-m-d">
+                                    </td>
+                                </tr>
+
                                 <!-- Hour -->
                                 <tr style="font-size: 0.9rem">
                                     <th scope="row" style="width: 30%">
@@ -189,7 +230,8 @@
                                         </label>
                                     </th>
                                     <td class="font-w600">
-                                        <input type="text" class="js-flatpickr  @error('price') hour_party @enderror form-control bg-white"
+                                        <input type="text"
+                                               class="js-flatpickr  @error('price') hour_party @enderror form-control bg-white"
                                                id="hour_party"
                                                name="hour_party"
                                                data-enable-time="true"
@@ -215,21 +257,22 @@
                                     </td>
                                 </tr>
 
-                                <!-- item images -->
-                                <tr style="font-size: 0.9rem">
+                                <!-- main image-->
+                                <tr>
                                     <th scope="row" style="width: 30%">
                                         <label for="image">
                                             الصورة الرئيسية
                                         </label>
                                     </th>
                                     <td class="font-w600">
-                                    <input type="file" name="image"
-                                           class="form-group dropify"
-                                           data-max-file-size="1M"
-                                           data-height="30">
-                                    <span class="text-danger" style="font-size: 0.7rem">الحجم المسموح هو 1024 كيلوبايت -  JPG أو PNG</span>
+                                        <input type="file" name="image"
+                                               class="form-group dropify"
+                                               data-max-file-size="1M"
+                                               data-height="30">
+                                        <span class="text-danger" style="font-size: 0.7rem">الحجم المسموح هو 1024 كيلوبايت -  JPG أو PNG</span>
                                     </td>
                                 </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -240,29 +283,81 @@
                         <div class="table-responsive col-12">
                             <table class="table table-bordered table-striped table-vcenter no-footer">
                                 <tbody>
+
+                                <!-- properties -->
+                                <tr style="font-size: 0.9rem">
+                                    <td class="font-w600" colspan="2">
+                                        <div class="text-center">
+                                            <div class="custom-control custom-switch custom-control-inline custom-control-info">
+                                                <input type="checkbox" class="custom-control-input" id="vat" name="vat" checked="">
+                                                <label class="custom-control-label" for="vat"> تطبيق الضريبة</label>
+                                            </div>
+
+                                            <div class="custom-control custom-switch custom-control-inline custom-control-success">
+                                                <input type="checkbox" class="custom-control-input" id="special" name="special" checked="">
+                                                <label class="custom-control-label" for="special"> مميزة؟</label>
+                                            </div>
+                                            <div class="custom-control custom-switch custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="photography" name="photography">
+                                                <label class="custom-control-label" for="photography">التصوير</label>
+                                            </div>
+                                            <div class="custom-control custom-switch custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="food" name="food">
+                                                <label class="custom-control-label" for="food">الطعام</label>
+                                            </div>
+
+                                            <div class="custom-control custom-switch custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="id_card" name="id_card">
+                                                <label class="custom-control-label" for="id_card">الهوية</label>
+                                            </div>
+
+                                            <div class="custom-control custom-switch custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="trans" name="trans">
+                                                <label class="custom-control-label" for="trans">مواصلات</label>
+                                            </div>
+
+                                            <div class="custom-control custom-switch custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="guide" name="guide">
+                                                <label class="custom-control-label" for="guide">مرشد سياحي</label>
+                                            </div>
+
+                                            <div class="custom-control custom-switch custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input" id="safety" name="safety">
+                                                <label class="custom-control-label" for="safety">السلامه</label>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
                                 <!-- Description -->
                                 <tr style="font-size: 0.9rem">
                                     <th scope="row" style="width: 20%">
                                         <label for="desc">
-                                           وصف النشاط
+                                            وصف النشاط
                                         </label>
                                     </th>
                                     <td class="font-w600">
-                                        <textarea class="js-summernote" id="desc" name="desc">{{ old('desc') }}</textarea>
+                                        <textarea class="js-summernote" id="desc"
+                                                  name="desc">{{ old('desc') }}</textarea>
                                     </td>
                                 </tr>
+
+
 
                                 <!-- information -->
                                 <tr style="font-size: 0.9rem">
                                     <th scope="row" style="width: 20%">
                                         <label for="information">
-                                           معلومات التذكرة
+                                            معلومات التذكرة
                                         </label>
                                     </th>
                                     <td class="font-w600">
-                                        <textarea class="js-summernote" id="information" name="information">{{old('information')}}</textarea>
+                                        <textarea class="js-summernote" id="information"
+                                                  name="information">{{old('information')}}</textarea>
                                     </td>
                                 </tr>
+
 
                                 <!-- image 2 -->
                                 <tr style="font-size: 0.9rem">
@@ -344,21 +439,21 @@
 
     <script>
 
-            jQuery(function () {
-                Dashmix.helpers([
-                    'flatpickr',
-                    'datepicker',
-                    'summernote',
-                    // 'maxlength',
-                ]);
-            });
+        jQuery(function () {
+            Dashmix.helpers([
+                'flatpickr',
+                'datepicker',
+                'summernote',
+                // 'maxlength',
+            ]);
+        });
 
         $('.js-summernote').summernote({
             height: 100,   //set editable area's height
         });
 
 
-    jQuery(() => {
+        jQuery(() => {
             $('.js-select2').niceSelect('destroy');
             $(".js-select2").select2({
                 dir: "rtl",

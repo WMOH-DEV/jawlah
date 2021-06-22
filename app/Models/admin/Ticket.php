@@ -11,6 +11,8 @@ class Ticket extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    protected $appends = ['net_price'];
+
     public function city()
     {
         return $this->belongsTo(City::class);
@@ -36,6 +38,17 @@ class Ticket extends Model
     {
         // return str_replace('.', ',', $value);
         return str_replace('.0', '', number_format($value, 1, '.', ''));
+    }
+
+    public function getDiscountAttribute($value)
+    {
+        // return str_replace('.', ',', $value);
+        return str_replace('.0', '', number_format($value, 1, '.', ''));
+    }
+
+        public function getNetPriceAttribute($value)
+    {
+        return $this->price_without_vat - $this->discount;
     }
 
 //    public function setPriceAttribute($value)

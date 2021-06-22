@@ -14,11 +14,16 @@
                         <div class="w-100 text-center text-md-right pr-md-5">
                             <h1 class="h2 mb-2">{{ $ticket->name }}</h1>
                             <h2 class="h4 font-size-sm text-uppercase font-w600 text-muted"><i class="fas fa-table"></i>
-                                <span>التاريخ: {{ $ticket->date_party }}</span> - الساعة: {{ $ticket->hour_party }}
+                                <span>التاريخ: {{ $ticket->date_party }}</span> | <span class="text-danger">تاريخ الانتهاء: {{ $ticket->last_day }}</span>
+                                - الساعة: {{ $ticket->hour_party }}
                             </h2>
-                            <a class="font-w600" href="javascript:void(0)">
+                            <a class="font-w600" href="{{route('merchants.show', $ticket->user->id)}}">
                                 <i class="fas fa-user text-dark"></i> بواسطة: {{ $ticket->user->name }}
                             </a>
+                            @if ($ticket->special)
+                                <span class="font-w600 mr-5">تذكرة مميزة<i
+                                        class="fas fa-check-circle text-primary pr-3"></i></span>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-4 d-flex align-items-center">
@@ -26,7 +31,8 @@
                             class="block block-rounded block-link-shadow block-transparent bg-white-75 text-center mb-0 mx-auto">
                             <div class="block-content block-content-full px-5 py-4">
                                 <div class="font-size-h2 font-w600 text-black">
-                                    {{ $ticket->price }} <span class="text-black-50"> ر.س </span>
+                                    {!!  $ticket->price == 0 ? "تذكرة مجانية" : $ticket->price . ' <span
+                                        class="text-black-50"> ر.س </span>'  !!}
                                 </div>
                                 <div class="font-size-sm font-w600 text-uppercase text-muted mt-1 push">
                                     <span>الكمية: </span><span>{{ $ticket->qty }}</span>
@@ -69,26 +75,74 @@
                                 <div class="font-w600">الفئة</div>
                                 <div class="text-muted">{{ $ticket->category->name }}</div>
                             </li>
+
+                            @if ($ticket->discount > 0)
+                                <li>
+                                <span class="fa-li text-primary">
+                                    <i class="fa fa-money-check-alt"></i>
+                                </span>
+                                    <div class="font-w600">سعر التذكرة <span class="font-size-xs">(بدون خصم)</span></div>
+                                    <div
+                                        class="text-muted">{!! $ticket->price_without_vat . '<span class="text-black-50"> ر.س </span>' !!}
+                                    </div>
+                                </li>
+
+                                <li>
+                                <span class="fa-li text-primary">
+                                    <i class="fa fa-dollar-sign"></i>
+                                </span>
+                                    <div class="font-w600 text-danger">الخصم </div>
+                                    <div
+                                        class="text-muted">{!! $ticket->discount . '<span class="text-black-50"> ر.س </span>' !!}
+                                    </div>
+                                </li>
+
+                                <li>
+                                <span class="fa-li text-primary">
+                                    <i class="fa fa-money-check-alt"></i>
+                                </span>
+                                    <div class="font-w600">سعر التذكرة <span class="font-size-xs">(قبل الضريبة)</span></div>
+                                    <div
+                                        class="text-muted">{!! $ticket->net_price . '<span class="text-black-50"> ر.س </span>' !!}
+                                    </div>
+                                </li>
+                            @endif
+
                             <li>
                                 <span class="fa-li text-primary">
                                     <i class="fa fa-money-check-alt"></i>
                                 </span>
-                                <div class="font-w600">سعر التذكرة</div>
-                                <div class="text-muted">{{ $ticket->price }} <span class="text-black-50"> ر.س </span>
+                                <div class="font-w600">سعر التذكرة <span class="font-size-xs">(النهائي)</span></div>
+                                <div
+                                    class="text-muted">{!! $ticket->price == 0 ? "تذكرة مجانية" : $ticket->price . '<span class="text-black-50"> ر.س </span>' !!}
                                 </div>
                             </li>
+
+
                             <li>
                                 <span class="fa-li text-primary">
                                     <i class="fas fa-percent"></i>
                                 </span>
                                 <div class="font-w600">الضريبة</div>
-                                <div class="text-muted">{{ $ticket->vat ? 'مطبقة' : 'غير مطبقة' }}</div>
+                                <div class="text-muted">
+                                    @if ($ticket->price == 0 )
+                                        تذكرة مجانية
+                                    @else
+                                        {{ $ticket->vat ? 'مطبقة' : 'غير مطبقة' }}
+                                    @endif
+                                </div>
                             </li>
 
                             <li><span class="fa-li text-primary"><i class="fas fa-table"></i></span>
                                 <div class="font-w600">تاريخ النشاط</div>
                                 <div class="text-muted">{{ $ticket->date_party }}</div>
                             </li>
+
+                            <li><span class="fa-li text-primary"><i class="fas fa-table"></i></span>
+                                <div class="font-w600">تاريخ نهاية النشاط</div>
+                                <div class="text-muted">{{ $ticket->last_day }}</div>
+                            </li>
+
                             <li><span class="fa-li text-primary"><i class="fa fa-clock"></i></span>
                                 <div class="font-w600">موعد النشاط</div>
                                 <div class="text-muted">{{ $ticket->hour_party }}</div>
@@ -105,10 +159,96 @@
             </div>
             <div class="col-md-8 order-md-0">
 
+                <!-- Ticket properties -->
+                <div class="block block-rounded">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">خصائص التذكرة</h3>
+                    </div>
+                    <div class="block-content">
+
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-6 col-md-2 text-center">
+                                <div
+                                    class="item animated bounceIn item-rounded  {{ $ticket->photography ? 'bg-info' : 'bg-gray-light' }} text-white mx-auto"
+                                    data-toggle="appear" data-class="animated bounceIn"
+                                    style="height:3rem; width:3rem;">
+                                    <i class="fa fa-camera"></i>
+                                </div>
+                                <div
+                                    class="font-size-base font-w400 pt-3 mb-2 {{ $ticket->photography ? 'text-info' : 'text-gray-light' }} ">
+                                    مسموح التصوير
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 text-center">
+                                <div
+                                    class="item animated bounceIn item-rounded {{ $ticket->food ? 'bg-info' : 'bg-gray-light' }} text-white mx-auto"
+                                    data-toggle="appear" data-class="animated bounceIn"
+                                    style="height:3rem; width:3rem;">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div
+                                    class="font-size-base font-w400 pt-3 mb-2 {{ $ticket->food ? 'text-info' : 'text-gray-light' }}">
+                                    متـــاح الطعـــام
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 text-center">
+                                <div
+                                    class="item animated bounceIn item-rounded {{ $ticket->id_card ? 'bg-info' : 'bg-gray-light' }} text-white mx-auto"
+                                    data-toggle="appear" data-class="animated bounceIn"
+                                    style="height:3rem; width:3rem;">
+                                    <i class="far fa-id-card"></i>
+                                </div>
+                                <div
+                                    class="font-size-base font-w400 pt-3 mb-2 {{ $ticket->id_card ? 'text-info' : 'text-gray-light' }}">
+                                    مطلوب الهويـة
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 text-center">
+                                <div
+                                    class="item animated bounceIn item-rounded {{ $ticket->trans ? 'bg-info' : 'bg-gray-light' }} text-white mx-auto"
+                                    data-toggle="appear" data-class="animated bounceIn"
+                                    style="height:3rem; width:3rem;">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div
+                                    class="font-size-base font-w400 pt-3 mb-2 {{ $ticket->trans ? 'text-info' : 'text-gray-light' }}">
+                                    الموصلات متاحة
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 text-center">
+                                <div
+                                    class="item animated bounceIn item-rounded {{ $ticket->guide ? 'bg-info' : 'bg-gray-light' }} text-white mx-auto"
+                                    data-toggle="appear" data-class="animated bounceIn"
+                                    style="height:3rem; width:3rem;">
+                                    <i class="fas fa-people-arrows"></i>
+                                </div>
+                                <div
+                                    class="font-size-base font-w400 pt-3 mb-2 {{ $ticket->guide ? 'text-info' : 'text-gray-light' }}">
+                                    مرشـــد سياحي
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-2 text-center">
+                                <div
+                                    class="item animated bounceIn item-rounded {{ $ticket->safety ? 'bg-info' : 'bg-gray-light' }} text-white mx-auto"
+                                    data-toggle="appear" data-class="animated bounceIn"
+                                    style="height:3rem; width:3rem;">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div
+                                    class="font-size-base font-w400 pt-3 mb-2 {{ $ticket->safety ? 'text-info' : 'text-gray-light' }}">
+                                    السلامة العامة
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END Ticket info -->
+
                 <!-- Ticket info -->
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">معلومات التذكرة</h3>
+                        <h3 class="block-title">معلومات</h3>
                     </div>
                     <div class="block-content">
                         <p>{!! $ticket->desc !!}</p>
@@ -146,12 +286,13 @@
                                 <img class="img-fluid" style="height:250px" src="{{ asset("uploads/$ticket->image2") }}"
                                      alt="{{ $ticket->name }}">
                             </div>
-                           @if ( $ticket->image3 )
+                            @if ( $ticket->image3 )
                                 <div>
-                                    <img class="img-fluid" style="height:250px" src="{{ asset("uploads/$ticket->image3") }}"
+                                    <img class="img-fluid" style="height:250px"
+                                         src="{{ asset("uploads/$ticket->image3") }}"
                                          alt="{{ $ticket->name }}">
                                 </div>
-                           @endif
+                            @endif
                             @if ($ticket->image4)
                                 <div>
                                     <img class="img-fluid" style="height:250px"

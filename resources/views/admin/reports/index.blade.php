@@ -11,7 +11,7 @@
         <h2 class="content-heading">تقارير الموقع</h2>
         <div class="row">
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                <a class="block block-rounded block-link-pop" href="{{route('clients.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div>
                             @if ($currentMonthUsers > 1)
@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                <a class="block block-rounded block-link-pop" href="{{route('merchants.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div>
                             <i class="far fa-2x fa-user-circle text-success"></i>
@@ -49,7 +49,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                <a class="block block-rounded block-link-pop" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w300 mb-0">
@@ -66,7 +66,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                <a class="block block-rounded block-link-pop" href="{{route('tickets.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w300 mb-0">
@@ -83,7 +83,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-shadow bg-primary" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow bg-primary" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div>
                             <i class="fa fa-2x fa-arrow-alt-circle-up text-primary-lighter"></i>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-shadow bg-warning" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow bg-warning" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div class="mr-3">
                             <p class="text-white font-size-h3 font-w300 mb-0">
@@ -119,7 +119,7 @@
             </div>
 
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-shadow bg-success" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow bg-success" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div>
 
@@ -142,7 +142,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-3">
-                <a class="block block-rounded block-link-shadow bg-danger" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow bg-danger" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
                         <div class="mr-3">
                             <p class="text-white font-size-h3 font-w300 mb-0">
@@ -160,7 +160,7 @@
             </div>
 
             <div class="col-md-6">
-                <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+                <div class="block block-rounded block-link-shadow">
                     <div class="block-content block-content-full">
                         <div class="row text-center">
                             <div class="col-4">
@@ -204,10 +204,10 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col-md-6">
-                <a class="block block-rounded bg-gd-sublime" href="javascript:void(0)">
+                <div class="block block-rounded bg-gd-sublime">
                     <div class="block-content block-content-full">
                         <div class="row text-center">
                             <div class="col-4">
@@ -251,19 +251,18 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
         <!-- END Simple -->
 
         <!-- Charts -->
         <!-- jQuery Sparkline (.js-sparkline class is initialized in Helpers.sparkline() -->
-        <!-- For more info and examples you can check out http://omnipotent.net/jquery.sparkline/#s-about -->
         <h2 class="content-heading">رسم بياني</h2>
         <div class="row">
             <!-- Lines -->
             <div class="col-md-6 col-xl-4 invisible" data-toggle="appear">
-                <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex justify-content-between">
                         <div class="mr-3">
                             <p class="font-size-h3 font-w300 mb-0">
@@ -285,7 +284,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-4 invisible" data-toggle="appear">
-                <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow" href="{{route('clients.index')}}">
                     <div class="block-content block-content-full d-flex justify-content-between">
                         <div class="mr-3">
 
@@ -306,7 +305,7 @@
                 </a>
             </div>
             <div class="col-md-6 col-xl-4 invisible" data-toggle="appear">
-                <a class="block block-rounded block-link-shadow" href="javascript:void(0)">
+                <a class="block block-rounded block-link-shadow" href="{{route('orders.index')}}">
                     <div class="block-content block-content-full d-flex justify-content-between">
                         <div class="mr-3">
                             <p class="text-muted mb-0">

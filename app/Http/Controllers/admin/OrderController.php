@@ -37,6 +37,7 @@ class OrderController extends Controller
 
         Date::setLocale('ar');
         $data['date'] = Date::parse($order->ticket->date_party)->format('l j F Y');
+        $data['last_date'] = Date::parse($order->ticket->last_date)->format('l j F Y');
         // return view('admin.orders.test', compact('order', 'home','hijri','totalInArabic','party_hijri'));
 
         $price = floatval($order->ticket->price);

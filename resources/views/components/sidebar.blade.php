@@ -107,40 +107,35 @@
 
                 <li class="nav-main-heading">{{ __('sidebar.admin_sections') }}</li>
 
-                {{--                @can('إدارة المشرفين')--}}
-                {{--                    <!-- Users -->--}}
-                {{--                    <li class="nav-main-item">--}}
-                {{--                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"--}}
-                {{--                            aria-expanded="false" href="#">--}}
-                {{--                            <i class="nav-main-link-icon fas fa-users-cog"></i>--}}
-                {{--                            <span class="nav-main-link-name">إدارة مشرفين</span>--}}
-                {{--                        </a>--}}
-                {{--                        <ul class="nav-main-submenu">--}}
-                {{--                            @can('مشاهدة المشرفين')--}}
-                {{--                                <li class="nav-main-item">--}}
-                {{--                                    <a class="nav-main-link" href="{{ route('mods.index') }}">--}}
-                {{--                                        <span class="nav-main-link-name">قائمة المشرفين</span>--}}
-                {{--                                    </a>--}}
-                {{--                                </li>--}}
-                {{--                            @endcan--}}
+{{--                                @can('إدارة المشرفين')--}}
+                                    <!-- Users -->
+                                    <li class="nav-main-item">
+                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                                            aria-expanded="false" href="#">
+                                            <i class="nav-main-link-icon fas fa-users-cog"></i>
+                                            <span class="nav-main-link-name">إدارة مشرفين</span>
+                                        </a>
+                                        <ul class="nav-main-submenu">
+                                                <li class="nav-main-item">
+                                                    <a class="nav-main-link" href="{{ route('mods.index') }}">
+                                                        <span class="nav-main-link-name">قائمة المشرفين</span>
+                                                    </a>
+                                                </li>
 
-                {{--                            @can('إضافة مشرف')--}}
-                {{--                                <li class="nav-main-item">--}}
-                {{--                                    <a class="nav-main-link" href="{{ route('mods.create') }}">--}}
-                {{--                                        <span class="nav-main-link-name">إضافة مشرف جديد</span>--}}
-                {{--                                    </a>--}}
-                {{--                                </li>--}}
-                {{--                            @endcan--}}
-                {{--                            @can('تعديل الصلاحيات')--}}
-                {{--                                <li class="nav-main-item">--}}
-                {{--                                    <a class="nav-main-link" href="{{ route('roles.index') }}">--}}
-                {{--                                        <span class="nav-main-link-name">التحكم بالأدوار والصلاحيات</span>--}}
-                {{--                                    </a>--}}
-                {{--                                </li>--}}
-                {{--                            @endcan--}}
-                {{--                        </ul>--}}
-                {{--                    </li>--}}
-                {{--                @endcan--}}
+                                                <li class="nav-main-item">
+                                                    <a class="nav-main-link" href="{{ route('mods.create') }}">
+                                                        <span class="nav-main-link-name">إضافة مشرف جديد</span>
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav-main-item">
+                                                    <a class="nav-main-link" href="{{ route('roles.index') }}">
+                                                        <span class="nav-main-link-name">التحكم بالأدوار والصلاحيات</span>
+                                                    </a>
+                                                </li>
+                                        </ul>
+                                    </li>
+{{--                                @endcan--}}
 
 
 

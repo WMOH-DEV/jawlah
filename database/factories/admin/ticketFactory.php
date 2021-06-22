@@ -31,8 +31,16 @@ class ticketFactory extends Factory
             'information' => $this->faker->text(200),
             'qty' => $this->faker->numberBetween(10,100),
             'vat' => $this->faker->numberBetween(0,1),
+            'special' => $this->faker->numberBetween(0,1),
+            'food' => $this->faker->numberBetween(0,1),
+            'photography' => $this->faker->numberBetween(0,1),
+            'id_card' => $this->faker->numberBetween(0,1),
+            'trans' => $this->faker->numberBetween(0,1),
+            'guide' => $this->faker->numberBetween(0,1),
+            'safety' => $this->faker->numberBetween(0,1),
             'user_id' => $this->faker->numberBetween(1,20),
             'date_party' => $this->faker->date(),
+            'last_day' => $this->faker->date(),
             'hour_party' => $this->faker->time(),
         ];
     }

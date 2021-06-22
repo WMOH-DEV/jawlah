@@ -191,8 +191,11 @@
                     background-position: center;
                     background-size: cover;
                     background-repeat: no-repeat; height: 150px;">
-                <div class="bg-black" style=" width: 100%; height: 100%">
-                    <h3 style="color: white; font-size: 3.5rem;  text-shadow: 2px 2px #000;">{{$order->ticket->name}}</h3>
+                <div class="bg-black" style=" width: 100%; height: 100%;">
+                    <h3 style="color: white;
+                     font-size: 3.5rem;
+                       text-shadow: 2px 2px #000;
+                        ">{{$order->ticket->name}}</h3>
                 </div>
             </td>
         </tr>
@@ -215,12 +218,18 @@
         <tr>
             <td style="width: 30%; text-align: right;">
                 <h3 style="padding-right: 20px; font-size:1.3rem">
-                    تاريخ ووقت الفاعلية:
+                    تاريخ ووقت بداية الفاعلية:
+                </h3>
+                <h3 style="padding-right: 20px; font-size:1.3rem">
+                    تنتهي في:
                 </h3>
             </td>
             <td style="width: 40%;text-align: right;">
                  <span style="padding-right: 30px;display: inline-block;font-size:1.3rem; color: #7a0c0c">
                          {{$order->ticket->hour_party}} |  {{$date}}
+                    </span>
+                <span style="padding-right: 30px;display: inline-block;font-size:1.3rem; color: #7a0c0c">
+                     <br>    <span style="color: white">{{$order->ticket->hour_party}} |</span>  {{$last_date}}
                     </span>
             </td>
             <td style="width: 2%; text-align: center" colspan="3" rowspan="4">
@@ -265,12 +274,12 @@
                 <h3 style="padding-right: 20px;">
                     الرقم الضريبي:
                     <span style="padding-right: 30px;">
-                         {{$home->vat_id}}
+                         {{$home->vat_id  ?? "لم يتم إدخاله"}}
                     </span>
                 </h3>
                 <h3>
                     مبلغ ضريبة القيمة :
-                <span>
+                    <span>
                     {{$vat * $order->qty}}
                 </span>
                 </h3>
@@ -280,7 +289,11 @@
                 <h3 style="padding-right: 20px;">
                     السعر يشمل الضريبة:
                     <span style="padding-right: 30px;">
-                         {{$order->total}} SAR
+                        @if ($order->total > 0)
+                            {{$order->total}} SAR
+                        @else
+                            تذكرة مجانية
+                        @endif
                     </span>
                 </h3>
             </td>
@@ -322,44 +335,48 @@
             <td style="width: 6%;"></td>
         </tr>
 
+        @if ($home->covid19)
+            <tr>
+                <td colspan="2" style="width: 30%; text-align: right;font-size:0.8rem;">
+                    <h3 style="padding-right: 20px;">
+                        شروط وأحكام كوفيد-19:
+                    </h3>
+                </td>
+                <td style="width: 2%;"></td>
+                <td style="width: 20%; background: #dddddd;"></td>
+                <td style="width: 2%;"></td>
+                <td style="width: 6%;"></td>
+            </tr>
+            <tr>
+                <td colspan="6" style="width: 30%;font-size:0.7rem;  text-align: justify;">
+                    <h3 style="padding-right: 20px;">
+                        {{$home->covid19}}
+                    </h3>
+                </td>
 
-        <tr>
-            <td colspan="2" style="width: 30%; text-align: right;font-size:0.8rem;">
-                <h3 style="padding-right: 20px;">
-                    شروط وأحكام كوفيد-19:
-                </h3>
-            </td>
-            <td style="width: 2%;"></td>
-            <td style="width: 20%; background: #dddddd;"></td>
-            <td style="width: 2%;"></td>
-            <td style="width: 6%;"></td>
-        </tr>
-        <tr>
-            <td colspan="6" style="width: 30%;font-size:0.7rem;  text-align: justify;">
-                <h3 style="padding-right: 20px;">
-                    {{$home->covid19}}
-                </h3>
-            </td>
+            </tr>
+        @endif
 
-        </tr>
+        @if ($home->terms)
+            <tr>
+                <td colspan="6" style="width: 30%; text-align: right;font-size:0.8rem;">
+                    <h3 style="padding-right: 20px;">
+                        الشروط والأحكام:
+                    </h3>
+                </td>
+            </tr>
 
-        <tr>
-            <td colspan="6" style="width: 30%; text-align: right;font-size:0.8rem;">
-                <h3 style="padding-right: 20px;">
-                    الشروط والأحكام:
-                </h3>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="6" style="width: 30%;font-size:0.9rem;  text-align: justify;">
+            <tr>
+                <td colspan="6" style="width: 30%;font-size:0.9rem;  text-align: justify;">
                     {{$home->terms}}
-            </td>
+                </td>
 
-        </tr>
+            </tr>
+        @endif
+
 
         <tr>
-            <td colspan="6" style="width: 30%;font-size:1.3rem;  text-align: center;">
+            <td colspan="6" style="width: 30%;font-size:1.3rem;  text-align: center; padding-top: 20px">
                 <p>هذه هي تذكرتك النهائية، المرجو الاحتفاظ بها على الهاتف المحمول</p>
                 <p>وتقديمها للموظف المختص استعداداً للدخول</p>
             </td>
