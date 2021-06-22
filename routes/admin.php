@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\MerchantController;
+use App\Http\Controllers\admin\ModController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\admin\ReportController;
@@ -40,6 +41,7 @@ Route::middleware(['auth','isAdmin'])->group(function (){
     Route::get('settings',[SettingController::class,'index'])->name('settings.index');
     Route::put('settings',[SettingController::class,'update'])->name('settings.update');
     Route::resource('pages', PageController::class);
+    Route::resource('mods', ModController::class);
     Route::resource('comments', CommentController::class)->except('create','store');
 
     Route::get('profile',[AuthController::class, 'edit'])->name('adminProfile.edit');

@@ -128,11 +128,6 @@
                                                     </a>
                                                 </li>
 
-                                                <li class="nav-main-item">
-                                                    <a class="nav-main-link" href="{{ route('roles.index') }}">
-                                                        <span class="nav-main-link-name">التحكم بالأدوار والصلاحيات</span>
-                                                    </a>
-                                                </li>
                                         </ul>
                                     </li>
 {{--                                @endcan--}}

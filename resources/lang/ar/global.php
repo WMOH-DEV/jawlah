@@ -12,7 +12,7 @@ return [
     'by_company'               => 'تنفيذ شركة',
     'by'                    => 'بواسطة',
     'author'                => 'Wael Mohamed',
-    'site'                  => 'شمس',
+    'site'                  => 'جولة',
     'author_link'           => 'https://www.fb.com/WaelMohElSaid',
     'latest_requests'       => 'آخر عمليات الشراء',
     'latest_register'       => 'آخر عمليات التسجيل',
