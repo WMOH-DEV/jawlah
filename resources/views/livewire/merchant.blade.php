@@ -28,11 +28,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-5">
+                    @superAdmin
+
                     <a href="{{route('merchants.create')}}" type="button" wire:offline.attr="disabled" class="btn btn-outline-success mr-1 mb-3 btn-sm"
                             >
                         <i class="fa fa-fw fa-plus mr-1"></i>
                         {{ __('global.add') }}
                     </a>
+
                 @if (count($checked) > 0)
                     <!-- Delete all -->
                         <button type="button"
@@ -42,6 +45,9 @@
                             <i class="fa fa-fw fa-times mr-1"></i>  حذف @if (count($checked) > 0) ({{count($checked)}}) @endif
                         </button>
                     @endif
+                    @endsuperAdmin
+
+
                 </div>
 
                 <div class="col-sm-12 col-md-7 d-flex justify-between">
@@ -75,6 +81,7 @@
 
             </div>
 
+            @superAdmin
             @if ($selectPage)
                 @if ($selectAll)
                     <p class="font-size-sm m-1">لقد قمت بتحديد جميع الادخالات وعددها <span class="font-w700">{{$merchants->total()}}</span>
@@ -83,11 +90,13 @@
                     <p class="font-size-sm m-1">لقد قمت بتحديد <span class="font-w700">{{count($checked)}}</span> هل تريد تحديد كل الادخالات <span class="font-w700">{{$merchants->total()}}</span> ؟  <button wire:click="selectAll" wire:offline.attr="disabled" class="badge badge-pill py-1 badge-success pointer">تحديد الكل <i class="fa fa-fw fa-check"></i> </button></p>
                 @endif
             @endif
+            @endsuperAdmin
             <div class="table-responsive">
                 <table class="table table-bordered
                  table-striped table table-hover table-vcenter">
                     <thead style="font-size: 0.7rem">
                     <tr>
+                        @superAdmin
                         <th class="text-center" style="width: 5%">
                             <div class="custom-control custom-checkbox custom-control-primary d-inline-block">
                                 <input type="checkbox"
@@ -99,7 +108,7 @@
                             </div>
 
                         </th>
-
+                        @endsuperAdmin
                         <th class="text-center">رقم ID</th>
                         <th class="text-center">الإسم</th>
                         <th class="text-center">رقم الجوال</th>
@@ -112,6 +121,7 @@
 
                     @foreach($merchants as $merchant)
                         <tr style="font-size: 0.8rem">
+                            @superAdmin
                             <td class="text-center">
                                 <div class="custom-control custom-checkbox custom-control-primary d-inline-block">
                                     <input type="checkbox"
@@ -123,6 +133,7 @@
                                     <label class="custom-control-label" for="{{$merchant->id}}"></label>
                                 </div>
                             </td>
+                            @endsuperAdmin
                             <td class="text-center">{{ $merchant->id }}</td>
                             <td class="text-center">{{ $merchant->name }}</td>
                             <td class="text-center">{{ $merchant->phone }}</td>
@@ -140,8 +151,15 @@
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-left"
-                                            title="حذف" data-original-title="delete" data-toggle="modal"
-                                            data-target="#modal-delete{{$merchant->id}}">
+                                            title="حذف"
+                                            @superAdmin
+                                            data-original-title="delete" data-toggle="modal"
+                                            data-target="#modal-delete{{$merchant->id}}"
+                                            @endsuperAdmin
+                                            @Mod
+                                            disabled
+                                            @endMod
+                                    >
                                         <i class="fa fa-times"></i>
                                     </button>
                                     @include('admin.merchants.inc.del-modal')

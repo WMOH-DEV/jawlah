@@ -1,7 +1,7 @@
 <nav id="sidebar" aria-label="Main Navigation">
     <!-- Side Header -->
     <div class="bg-header-dark">
-        <div class="content-header my-3 bg-white d-flex justify-content-center align-items-center" >
+        <div class="content-header my-3 bg-white d-flex justify-content-center align-items-center">
             <!-- Logo -->
             <a class="font-w600 text-white tracking-wide" href="">
                 {{--                {{ __('global.site') }}--}}
@@ -42,7 +42,8 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Route::currentRouteName() === 'admincp.index' ? 'active' : ''}}" href="{{route('admincp.index')}}">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'admincp.index' ? 'active' : ''}}"
+                       href="{{route('admincp.index')}}">
                         <i class="nav-main-link-icon fa fa-home"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.main_page') }}</span>
                     </a>
@@ -52,7 +53,8 @@
 
             <!-- users -->
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Route::currentRouteName() == 'clients.index' ? 'active' : ''}}" href="{{route('clients.index')}}">
+                    <a class="nav-main-link {{ Route::currentRouteName() == 'clients.index' ? 'active' : ''}}"
+                       href="{{route('clients.index')}}">
                         <i class="nav-main-link-icon fas fa-users"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.users') }}</span>
                     </a>
@@ -60,7 +62,8 @@
 
                 <!-- merchants -->
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Route::currentRouteName() === 'merchants.index' ? 'active' : ''}}" href="{{route('merchants.index')}}">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'merchants.index' ? 'active' : ''}}"
+                       href="{{route('merchants.index')}}">
                         <i class="nav-main-link-icon fas fa-users"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.Merchants') }}</span>
                     </a>
@@ -98,49 +101,48 @@
 
                 <!-- Orders -->
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Route::currentRouteName() === 'orders.index' ? 'active' : ''}}" href="{{route('orders.index')}}">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'orders.index' ? 'active' : ''}}"
+                       href="{{route('orders.index')}}">
                         <i class="nav-main-link-icon fas fa-calendar-week"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.orders') }}</span>
                     </a>
                 </li>
 
+@superAdmin
 
                 <li class="nav-main-heading">{{ __('sidebar.admin_sections') }}</li>
 
-{{--                                @can('إدارة المشرفين')--}}
-                                    <!-- Users -->
-                                    <li class="nav-main-item">
-                                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                                            aria-expanded="false" href="#">
-                                            <i class="nav-main-link-icon fas fa-users-cog"></i>
-                                            <span class="nav-main-link-name">إدارة مشرفين</span>
-                                        </a>
-                                        <ul class="nav-main-submenu">
-                                                <li class="nav-main-item">
-                                                    <a class="nav-main-link" href="{{ route('mods.index') }}">
-                                                        <span class="nav-main-link-name">قائمة المشرفين</span>
-                                                    </a>
-                                                </li>
+                <!-- Users -->
+                <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                       aria-expanded="false" href="#">
+                        <i class="nav-main-link-icon fas fa-users-cog"></i>
+                        <span class="nav-main-link-name">إدارة مشرفين</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('mods.index') }}">
+                                <span class="nav-main-link-name">قائمة المشرفين</span>
+                            </a>
+                        </li>
 
-                                                <li class="nav-main-item">
-                                                    <a class="nav-main-link" href="{{ route('mods.create') }}">
-                                                        <span class="nav-main-link-name">إضافة مشرف جديد</span>
-                                                    </a>
-                                                </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('mods.create') }}">
+                                <span class="nav-main-link-name">إضافة مشرف جديد</span>
+                            </a>
+                        </li>
 
-                                        </ul>
-                                    </li>
-{{--                                @endcan--}}
-
+                    </ul>
+                </li>
 
 
                 <li class="nav-main-item">
-                    <a class="nav-main-link {{ Route::currentRouteName() === 'reports.index' ? 'active' : ''}}" href="{{route('reports.index')}}">
+                    <a class="nav-main-link {{ Route::currentRouteName() === 'reports.index' ? 'active' : ''}}"
+                       href="{{route('reports.index')}}">
                         <i class="nav-main-link-icon far fa-copy"></i>
                         <span class="nav-main-link-name">{{ __('sidebar.reports') }}</span>
                     </a>
                 </li>
-
 
 
                 <!-- System -->
@@ -211,16 +213,18 @@
 
             </ul>
 
-
+@endsuperAdmin
             <div class="nav-main-item go_to_site">
-                <a  href="{{url('/')}}" target="_blank">
+                <a href="{{url('/')}}" target="_blank">
                     <i class="nav-main-link-icon fas fa-globe"></i>
                     <span class="nav-main-link-name" style="color: #0A63A5">{{ __('sidebar.go_to_site') }}</span>
                 </a>
             </div>
 
             <div class="nav-main-item log_out">
-                <a class="nav-main-link" onclick="event.preventDefault(); document.getElementById('logout-sidebar').submit();" href="#route('logout')">
+                <a class="nav-main-link"
+                   onclick="event.preventDefault(); document.getElementById('logout-sidebar').submit();"
+                   href="#route('logout')">
                     <i class="nav-main-link-icon fas fa-sign-out-alt"></i>
                     <span class="nav-main-link-name">{{ __('sidebar.log_out') }}</span>
                 </a>

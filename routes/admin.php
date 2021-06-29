@@ -28,7 +28,20 @@ Route::get('/', function(){
 //	Route::view('profile', 'profile.show');
 //});
 
-Route::middleware(['auth','isAdmin'])->group(function (){
+Route::middleware(['auth','isAdmin'])->group(function () {
+    Route::get('settings',[SettingController::class,'index'])->name('settings.index');
+    Route::put('settings',[SettingController::class,'update'])->name('settings.update');
+    Route::resource('pages', PageController::class);
+    Route::resource('mods', ModController::class);
+    Route::resource('comments', CommentController::class)->except('create','store');
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+
+    Route::get('statisticsAjax', [ReportController::class, 'statisticsAjax'])->name('orders.ajax');
+    Route::get('usersAjax', [ReportController::class, 'usersAjax'])->name('users.ajax');
+    Route::get('SaleAjax', [ReportController::class, 'saleAjax'])->name('sales.ajax');
+});
+
+Route::middleware(['auth','isMod'])->group(function (){
 
     Route::get('/', [DashboardController::class, 'HomeView'])->name('admincp.index');
     Route::resource('clients', ClientController::class);
@@ -38,21 +51,10 @@ Route::middleware(['auth','isAdmin'])->group(function (){
     Route::resource('tickets', TicketController::class);
     Route::get('orders/{order}/print', [OrderController::class, 'viewOrder'])->name('orders.print');
     Route::resource('orders', OrderController::class)->except('create', 'store');
-    Route::get('settings',[SettingController::class,'index'])->name('settings.index');
-    Route::put('settings',[SettingController::class,'update'])->name('settings.update');
-    Route::resource('pages', PageController::class);
-    Route::resource('mods', ModController::class);
-    Route::resource('comments', CommentController::class)->except('create','store');
 
     Route::get('profile',[AuthController::class, 'edit'])->name('adminProfile.edit');
     Route::put('profile/info',[AuthController::class, 'update'])->name('adminProfile.info');
     Route::put('profile/password',[AuthController::class, 'changePassword'])->name('adminProfile.password');
-
-    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
-
-    Route::get('statisticsAjax', [ReportController::class, 'statisticsAjax'])->name('orders.ajax');
-    Route::get('usersAjax', [ReportController::class, 'usersAjax'])->name('users.ajax');
-    Route::get('SaleAjax', [ReportController::class, 'saleAjax'])->name('sales.ajax');
 
 });
 

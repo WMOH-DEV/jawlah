@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\admin\Merchant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class MerchantController extends Controller
@@ -15,13 +16,17 @@ class MerchantController extends Controller
 
     public function show($id)
     {
-        $merchant = Merchant::findOrFail($id);
+        $merchant = Merchant::whereHas('role', function ($q) {
+            $q->where('name', 'تاجر');
+        })->where('id', $id)->first();
         return view('admin.merchants.show', ['merchant' => $merchant]);
     } // end show
 
     public function edit($id)
     {
-        $merchant = Merchant::findOrFail($id);
+        $merchant = Merchant::whereHas('role', function ($q) {
+            $q->where('name', 'تاجر');
+        })->where('id', $id)->first();
         return view('admin.merchants.edit', ['merchant' => $merchant]);
     } // end Edit
 
@@ -41,7 +46,10 @@ class MerchantController extends Controller
 
     public function create()
     {
-        return view('admin.merchants.create');
+        if (Auth::check() && Auth::user()->role_id == '3') {
+            return view('admin.merchants.create');
+        }
+        abort(403);
     } // end create
 
 

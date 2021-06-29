@@ -29,21 +29,27 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-3">
+                    @superAdmin
                     <a href="{{route('tickets.create')}}" type="button" wire:offline.attr="disabled"
                        class="btn btn-outline-success mr-1 mb-3 btn-sm"
                     >
                         <i class="fa fa-fw fa-plus mr-1"></i>
                         {{ __('global.add') }}
                     </a>
+
+
                 @if (count($checked) > 0)
                     <!-- Delete all -->
                         <button type="button"
                                 wire:click.prevent="deleteSelected"
                                 onclick="confirm('هل أنت متأكد من هذا الإجراء ؟') || event.stopImmediatePropagation()"
                                 class="btn btn-outline-danger mr-1 mb-3 btn-sm">
-                            <i class="fa fa-fw fa-times mr-1"></i> حذف @if (count($checked) > 0) ({{count($checked)}}) @endif
+                            <i class="fa fa-fw fa-times mr-1"></i> حذف @if (count($checked) > 0) ({{count($checked)}}
+                            ) @endif
                         </button>
                     @endif
+                    @endsuperAdmin
+
                 </div>
 
                 <div class="col-sm-12 col-md-9 row justify-between align-items-center pl-0">
@@ -106,7 +112,7 @@
                 </div>
 
             </div>
-
+            @superAdmin
             @if ($selectPage)
                 @if ($selectAll)
                     <p class="font-size-sm m-1">تم تحديد جميع الادخالات وعددها <span
@@ -130,11 +136,13 @@
                     @endif
                 @endif
             @endif
+            @endsuperAdmin
             <div class="table-responsive">
                 <table class="table table-bordered
                  table-striped table table-hover table-vcenter">
                     <thead style="font-size: 0.7rem">
                     <tr>
+                        @superAdmin
                         <th class="text-center" style="width: 5%">
                             <div class="custom-control custom-checkbox custom-control-primary d-inline-block">
                                 <input type="checkbox"
@@ -146,7 +154,7 @@
                             </div>
 
                         </th>
-
+                        @endsuperAdmin
                         <th class="text-center">رقم ID</th>
                         <th class="text-center">أسم النشاط</th>
                         <th class="text-center">الفئة</th>
@@ -161,6 +169,7 @@
 
                     @forelse ($tickets as $ticket)
                         <tr style="font-size: 0.8rem">
+                            @superAdmin
                             <td class="text-center">
                                 <div class="custom-control custom-checkbox custom-control-primary d-inline-block">
                                     <input type="checkbox"
@@ -172,6 +181,7 @@
                                     <label class="custom-control-label" for="{{$ticket->id}}"></label>
                                 </div>
                             </td>
+                            @endsuperAdmin
                             <td class="text-center">{{ $ticket->id }}</td>
                             <td class="text-center">{{ $ticket->name }}</td>
                             <td class="text-center">{{ $ticket->category->name }}</td>
@@ -193,8 +203,15 @@
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-primary js-tooltip-enabled btn-left"
-                                            title="حذف" data-original-title="delete" data-toggle="modal"
-                                            data-target="#modal-delete{{$ticket->id}}">
+                                            title="حذف"
+                                            @Mod
+                                            disabled
+                                            @endMod
+                                            @superAdmin
+                                            data-original-title="delete" data-toggle="modal"
+                                            data-target="#modal-delete{{$ticket->id}}"
+                                            @endsuperAdmin
+                                    >
                                         <i class="fa fa-times"></i>
                                     </button>
                                     @include('admin.tickets.inc.del-modal')

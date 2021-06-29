@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\admin\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -18,7 +19,10 @@ class ClientController extends Controller
 
     public function create()
     {
-        return view('admin.clients.create');
+        if (Auth::check() && Auth::user()->role_id == '3') {
+            return view('admin.clients.create');
+        }
+        abort(403);
     } // end create
 
 
@@ -43,14 +47,19 @@ class ClientController extends Controller
 
     public function show($id)
     {
-        $client = User::findOrFail($id);
+        $client = User::whereHas('role', function ($q) {
+            $q->where('name', 'عضو');
+        })->where('id', $id)->first();
+
         return view('admin.clients.show', ['client' => $client]);
     }
 
 
     public function edit($id)
     {
-        $client = User::findOrFail($id);
+        $client = User::whereHas('role', function ($q) {
+            $q->where('name', 'عضو');
+        })->where('id', $id)->first();
         return view('admin.clients.edit', ['client' => $client]);
     }
 

@@ -5,7 +5,8 @@
 @section('css')
 
     <link rel="stylesheet" href="{{asset('admin/assets')}}/js/plugins/datatables/dataTables.bootstrap4.css">
-    <link rel="stylesheet" href="{{asset('admin/assets')}}/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css">
+    <link rel="stylesheet"
+          href="{{asset('admin/assets')}}/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css">
     <link href="https://nightly.datatables.net/select/css/select.dataTables.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{asset('admin/assets')}}/js/plugins/select2/css/select2.min.css">
 
@@ -16,17 +17,19 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">  الفئات </h3>
+                <h3 class="block-title"> الفئات </h3>
                 <div class="block-options">
                     <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option"
                             data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
-                    <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option" data-action="state_toggle"
+                    <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option"
+                            data-action="state_toggle"
                             data-action-mode="demo">
                         <i class="si si-refresh"></i>
                     </button>
                     <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option"
                             data-action="content_toggle"><i class="si si-arrow-up"></i></button>
-                    <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option" data-action="close">
+                    <button type="button" class="btn btn-sm btn-alt-primary" data-toggle="block-option"
+                            data-action="close">
                         <i class="si si-close"></i>
                     </button>
                 </div>
@@ -35,6 +38,7 @@
             <div class="block-content block-content-full">
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
+                        @superAdmin
                         <button type="button"
                                 class="btn btn-outline-success mr-1 mb-3 btn-sm"
                                 data-toggle="modal"
@@ -44,48 +48,61 @@
                         </button>
                         <!-- Add modal -->
                         @include('admin.categories.inc.add_modal')
+                        @endsuperAdmin
                     </div>
                     <div class="col-sm-12 col-md-6 d-flex">
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered table-striped table-vcenter js-dataTable-buttons dataTable no-footer"
-                           id="DataTables_products" role="grid" aria-describedby="DataTables_Table_1_info">
+                    <table
+                        class="table table-hover table-bordered table-striped table-vcenter js-dataTable-buttons dataTable no-footer"
+                        id="DataTables_products" role="grid" aria-describedby="DataTables_Table_1_info">
                         <thead style="font-size: 0.7rem">
                         <tr>
-                          <th style="width: 2%">#</th>
-                          <th style="width: 10%">الصورة </th>
-                          <th class="text-center">اسم الفئة</th>
-                          <th class="text-center">الوصف</th>
-                          <th class="text-center">تاريخ الإضافة</th>
-                          <th class="text-center">الإجراءات</th>
+                            <th style="width: 2%">#</th>
+                            <th style="width: 10%">الصورة</th>
+                            <th class="text-center">اسم الفئة</th>
+                            <th class="text-center">الوصف</th>
+                            <th class="text-center">تاريخ الإضافة</th>
+                            <th class="text-center">الإجراءات</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach ($cats as $index => $cat)
-                        <tr>
-                          <td class="text-center" style="width: 2%">{{$index+1}}</td>
-                          <td class="text-center"><img src="{{asset('uploads')}}/{{$cat->image}}" alt="{{$cat->name}}" style="height: 50px; margin:auto"></td>
-                          <td class="text-center">{{$cat->name}}</td>
-                          <td class="text-center" style="width:40%">{{strlen(utf8_decode($cat->desc)) >= 70 ? mb_substr($cat->desc, 0, 70,'utf-8').'...': $cat->desc}}</td>
-                          <td class="text-center">{{ $cat->created_at->format('Y-m-d') }}</td>
-                          <td class="text-center">
-                            <div class="btn-group">
-                              <a href="{{route('categories.edit', $cat->id)}}" type="button" class="btn-right btn btn-sm btn-primary js-tooltip-enabled" data-toggle="tooltip"  title="تعديل" data-original-title="Edit">
-                                <i class="fa fa-pencil-alt"></i>
-                              </a>
-                                <!-- Delete-->
-                                <button type="button" class="btn btn-left btn-sm btn-primary js-tooltip-enabled"
-                                        title="حذف" data-original-title="delete" data-toggle="modal"
-                                        data-target="#modal-cat-delete{{$cat->id}}">
-                                  <i class="fa fa-times"></i>
-                                </button>
+                            <tr>
+                                <td class="text-center" style="width: 2%">{{$index+1}}</td>
+                                <td class="text-center"><img src="{{asset('uploads')}}/{{$cat->image}}"
+                                                             alt="{{$cat->name}}" style="height: 50px; margin:auto">
+                                </td>
+                                <td class="text-center">{{$cat->name}}</td>
+                                <td class="text-center"
+                                    style="width:40%">{{strlen(utf8_decode($cat->desc)) >= 70 ? mb_substr($cat->desc, 0, 70,'utf-8').'...': $cat->desc}}</td>
+                                <td class="text-center">{{ $cat->created_at->format('Y-m-d') }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="{{route('categories.edit', $cat->id)}}" type="button"
+                                           class="btn-right btn btn-sm btn-primary js-tooltip-enabled"
+                                           data-toggle="tooltip" title="تعديل" data-original-title="Edit">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                        <!-- Delete-->
+                                        <button type="button" class="btn btn-left btn-sm btn-primary js-tooltip-enabled"
+                                                title="حذف"
+                                                @Mod
+                                                disabled
+                                                @endMod
+                                                @superAdmin
+                                                data-original-title="delete" data-toggle="modal"
+                                                data-target="#modal-cat-delete{{$cat->id}}"
+                                                @endsuperAdmin>
+                                            <i class="fa fa-times"></i>
+                                        </button>
 
-                                <!-- Delete Modal -->
-                              @include('admin.categories.inc.del-modal')
-                            </div>
-                          </td>
-                        </tr>
+                                        <!-- Delete Modal -->
+                                        @include('admin.categories.inc.del-modal')
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
 
                         </tbody>
@@ -111,7 +128,7 @@
 
     <!-- Page JS Code -->
     <script src="{{asset('admin/assets')}}/_js/pages/be_tables_datatables.js"></script>
-{{--    <script src="https://nightly.datatables.net/select/js/dataTables.select.js"></script>--}}
+    {{--    <script src="https://nightly.datatables.net/select/js/dataTables.select.js"></script>--}}
     <script src="{{asset('admin/assets')}}/js/plugins/dropzone/dropzone.min.js"></script>
 
 
@@ -124,8 +141,8 @@
             messages: {
                 'default': '',
                 'replace': 'اضغط للتبديل او اسحب صورة',
-                'remove':  'حذف',
-                'error':   'يوجد خطأ حدث'
+                'remove': 'حذف',
+                'error': 'يوجد خطأ حدث'
             },
             error: {
                 'fileSize': 'حجم الملف  @{{ value }}أكبر من الحجم المسموح ',
@@ -144,7 +161,7 @@
         });
 
 
-    //languages
+        //languages
         jQuery.extend(true, jQuery.fn.dataTable.defaults, {
             language: {
                 "emptyTable": "ليست هناك بيانات متاحة في الجدول",
@@ -280,11 +297,9 @@
             //paging:   false,
             //info:     false,
             pageLength: 10,
-            lengthMenu: [[ 10, 20, 50], [10, 20, 50]],
+            lengthMenu: [[10, 20, 50], [10, 20, 50]],
             autoWidth: false,
-            buttons: [
-
-            ],
+            buttons: [],
 
             dom: "<'row'<'col-sm-12'<'text-center py-2 mb-2'B>>>" +
                 "<'row'<'col-sm-12 col-md-6'f><'col-sm-12 col-md-6 text-left'l>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
