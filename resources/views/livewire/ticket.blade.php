@@ -240,11 +240,6 @@
 @section('js')
     <script src="{{asset('admin/assets')}}/js/plugins/select2/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/ar.min.js"></script>
-    <script>
-        $(".js-select2").select2({
-            dir: "rtl",
-            width: "100%",
-        });
-    </script>
+    <script src="{{asset('admin/helpers/js/ticket-index.js')}}"></script>
 @endsection
 

@@ -7,7 +7,8 @@
 
 @section('js')
     <!-- Page JS Helpers (Table Tools helpers) -->
-    <script>jQuery(function(){Dashmix.helpers(['table-tools-checkable', 'table-tools-sections']);});</script>
+
+    <script src="{{asset('admin/helpers/js/ticket-index.js')}}"></script>
 @endsection
 
 
