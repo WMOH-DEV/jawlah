@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.38.0.
+ * Generated for Laravel 8.40.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1862,6 +1862,20 @@
         {
                         /** @var \Illuminate\Auth\SessionGuard $instance */
                         return $instance->attempt($credentials, $remember);
+        }
+                    /**
+         * Attempt to authenticate a user with credentials and additional callbacks.
+         *
+         * @param array $credentials
+         * @param array|callable $callbacks
+         * @param false $remember
+         * @return bool 
+         * @static 
+         */ 
+        public static function attemptWhen($credentials = [], $callbacks = null, $remember = false)
+        {
+                        /** @var \Illuminate\Auth\SessionGuard $instance */
+                        return $instance->attemptWhen($credentials, $callbacks, $remember);
         }
                     /**
          * Log the given user ID into the application.
@@ -3996,6 +4010,20 @@
                         $instance->queue(...$parameters);
         }
                     /**
+         * Queue a cookie to expire with the next response.
+         *
+         * @param string $name
+         * @param string|null $path
+         * @param string|null $domain
+         * @return void 
+         * @static 
+         */ 
+        public static function expire($name, $path = null, $domain = null)
+        {
+                        /** @var \Illuminate\Cookie\CookieJar $instance */
+                        $instance->expire($name, $path, $domain);
+        }
+                    /**
          * Remove a cookie from the queue.
          *
          * @param string $name
@@ -4182,141 +4210,6 @@
             /**
      * 
      *
-     * @see https://carbon.nesbot.com/docs/
-     * @see https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Factory.php
-     * @method static \Illuminate\Support\Carbon create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromDate($year = null, $month = null, $day = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTime($hour = 0, $minute = 0, $second = 0, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimeString($time, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimestamp($timestamp, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimestampMs($timestamp, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimestampUTC($timestamp)
-     * @method static \Illuminate\Support\Carbon createMidnightDate($year = null, $month = null, $day = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon disableHumanDiffOption($humanDiffOption)
-     * @method static \Illuminate\Support\Carbon enableHumanDiffOption($humanDiffOption)
-     * @method static \Illuminate\Support\Carbon fromSerialized($value)
-     * @method static \Illuminate\Support\Carbon getLastErrors()
-     * @method static \Illuminate\Support\Carbon getTestNow()
-     * @method static \Illuminate\Support\Carbon instance($date)
-     * @method static \Illuminate\Support\Carbon isMutable()
-     * @method static \Illuminate\Support\Carbon maxValue()
-     * @method static \Illuminate\Support\Carbon minValue()
-     * @method static \Illuminate\Support\Carbon now($tz = null)
-     * @method static \Illuminate\Support\Carbon parse($time = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon setHumanDiffOptions($humanDiffOptions)
-     * @method static \Illuminate\Support\Carbon setTestNow($testNow = null)
-     * @method static \Illuminate\Support\Carbon setUtf8($utf8)
-     * @method static \Illuminate\Support\Carbon today($tz = null)
-     * @method static \Illuminate\Support\Carbon tomorrow($tz = null)
-     * @method static \Illuminate\Support\Carbon useStrictMode($strictModeEnabled = true)
-     * @method static \Illuminate\Support\Carbon yesterday($tz = null)
-     * @method static \Illuminate\Support\Carbon|false createFromFormat($format, $time, $tz = null)
-     * @method static \Illuminate\Support\Carbon|false createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon|null make($var)
-     * @method static \Symfony\Component\Translation\TranslatorInterface getTranslator()
-     * @method static array getAvailableLocales()
-     * @method static array getDays()
-     * @method static array getIsoUnits()
-     * @method static array getWeekendDays()
-     * @method static bool hasFormat($date, $format)
-     * @method static bool hasMacro($name)
-     * @method static bool hasRelativeKeywords($time)
-     * @method static bool hasTestNow()
-     * @method static bool isImmutable()
-     * @method static bool isModifiableUnit($unit)
-     * @method static bool isStrictModeEnabled()
-     * @method static bool localeHasDiffOneDayWords($locale)
-     * @method static bool localeHasDiffSyntax($locale)
-     * @method static bool localeHasDiffTwoDayWords($locale)
-     * @method static bool localeHasPeriodSyntax($locale)
-     * @method static bool localeHasShortUnits($locale)
-     * @method static bool setLocale($locale)
-     * @method static bool shouldOverflowMonths()
-     * @method static bool shouldOverflowYears()
-     * @method static int getHumanDiffOptions()
-     * @method static int getMidDayAt()
-     * @method static int getWeekEndsAt()
-     * @method static int getWeekStartsAt()
-     * @method static mixed executeWithLocale($locale, $func)
-     * @method static string getLocale()
-     * @method static string pluralUnit(string $unit)
-     * @method static string singularUnit(string $unit)
-     * @method static void macro($name, $macro)
-     * @method static void mixin($mixin)
-     * @method static void resetMonthsOverflow()
-     * @method static void resetToStringFormat()
-     * @method static void resetYearsOverflow()
-     * @method static void serializeUsing($callback)
-     * @method static void setMidDayAt($hour)
-     * @method static void setToStringFormat($format)
-     * @method static void setTranslator(\Symfony\Component\Translation\TranslatorInterface $translator)
-     * @method static void setWeekEndsAt($day)
-     * @method static void setWeekStartsAt($day)
-     * @method static void setWeekendDays($days)
-     * @method static void useMonthsOverflow($monthsOverflow = true)
-     * @method static void useYearsOverflow($yearsOverflow = true)
-     */ 
-        class Date {
-                    /**
-         * Use the given handler when generating dates (class name, callable, or factory).
-         *
-         * @param mixed $handler
-         * @return mixed 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function use($handler)
-        {
-                        return \Illuminate\Support\DateFactory::use($handler);
-        }
-                    /**
-         * Use the default date class when generating dates.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function useDefault()
-        {
-                        \Illuminate\Support\DateFactory::useDefault();
-        }
-                    /**
-         * Execute the given callable on each date creation.
-         *
-         * @param callable $callable
-         * @return void 
-         * @static 
-         */ 
-        public static function useCallable($callable)
-        {
-                        \Illuminate\Support\DateFactory::useCallable($callable);
-        }
-                    /**
-         * Use the given date type (class) when generating dates.
-         *
-         * @param string $dateClass
-         * @return void 
-         * @static 
-         */ 
-        public static function useClass($dateClass)
-        {
-                        \Illuminate\Support\DateFactory::useClass($dateClass);
-        }
-                    /**
-         * Use the given Carbon factory when generating dates.
-         *
-         * @param object $factory
-         * @return void 
-         * @static 
-         */ 
-        public static function useFactory($factory)
-        {
-                        \Illuminate\Support\DateFactory::useFactory($factory);
-        }
-         
-    }
-            /**
-     * 
-     *
      * @see \Illuminate\Database\DatabaseManager
      * @see \Illuminate\Database\Connection
      */ 
@@ -4462,6 +4355,18 @@
         {
                         /** @var \Illuminate\Database\DatabaseManager $instance */
                         $instance->setReconnector($reconnector);
+        }
+                    /**
+         * Set the application instance used by the manager.
+         *
+         * @param \Illuminate\Contracts\Foundation\Application $app
+         * @return \Illuminate\Database\DatabaseManager 
+         * @static 
+         */ 
+        public static function setApplication($app)
+        {
+                        /** @var \Illuminate\Database\DatabaseManager $instance */
+                        return $instance->setApplication($app);
         }
                     /**
          * Determine if the connected database is a MariaDB database.
@@ -6645,7 +6550,7 @@
      * @method static \Illuminate\Http\Client\PendingRequest dump()
      * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @method static \Illuminate\Http\Client\PendingRequest async()
-     * @method static \Illuminate\Http\Client\Pool pool(callable $callback)
+     * @method static array pool(callable $callback)
      * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response get(string $url, array $query = [])
      * @method static \Illuminate\Http\Client\Response head(string $url, array $query = [])
@@ -11094,8 +10999,8 @@
      * @method static \Illuminate\Routing\RouteRegistrar middleware(array|string|null $middleware)
      * @method static \Illuminate\Routing\RouteRegistrar name(string $value)
      * @method static \Illuminate\Routing\RouteRegistrar namespace(string|null $value)
-     * @method static \Illuminate\Routing\RouteRegistrar prefix(string  $prefix)
-     * @method static \Illuminate\Routing\RouteRegistrar where(array  $where)
+     * @method static \Illuminate\Routing\RouteRegistrar prefix(string $prefix)
+     * @method static \Illuminate\Routing\RouteRegistrar where(array $where)
      * @see \Illuminate\Routing\Router
      */ 
         class Route {
@@ -15090,7 +14995,128 @@
      
 }
 
-        namespace Barryvdh\Debugbar { 
+    namespace Jenssegers\Date { 
+            /**
+     * 
+     *
+     */ 
+        class Date {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Date {
+         
+    }
+     
+}
+
+        namespace Meneses\LaravelMpdf\Facades { 
+            /**
+     * Class LaravelMpdf
+     *
+     * @package Meneses\LaravelMpdf\Facades
+     */ 
+        class LaravelMpdf {
+                    /**
+         * 
+         *
+         * @param array $config
+         * @return \Meneses\LaravelMpdf\LaravelMpdf 
+         * @static 
+         */ 
+        public static function getPdf($config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->getPdf($config);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string $html
+         * @return \Pdf 
+         * @static 
+         */ 
+        public static function loadHTML($html, $config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->loadHTML($html, $config);
+        }
+                    /**
+         * Chunk a HTML with given word and load string
+         *
+         * @param string $separator
+         * @param string $html
+         * @return \Pdf 
+         * @static 
+         */ 
+        public static function chunkLoadHTML($separator, $html, $config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->chunkLoadHTML($separator, $html, $config);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @param string $file
+         * @return \Pdf 
+         * @static 
+         */ 
+        public static function loadFile($file, $config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->loadFile($file, $config);
+        }
+                    /**
+         * Chunk a HTML file with given word and load HTML
+         *
+         * @param string $separator
+         * @param string $file
+         * @return \Pdf 
+         * @static 
+         */ 
+        public static function chunkLoadFile($separator, $file, $config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->chunkLoadFile($separator, $file, $config);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @return \Pdf 
+         * @static 
+         */ 
+        public static function loadView($view, $data = [], $mergeData = [], $config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->loadView($view, $data, $mergeData, $config);
+        }
+                    /**
+         * Chunk a View with given word and load HTML
+         *
+         * @param string $separator
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @return \Pdf 
+         * @static 
+         */ 
+        public static function chunkLoadView($separator, $view, $data = [], $mergeData = [], $config = [])
+        {
+                        /** @var \Meneses\LaravelMpdf\LaravelMpdfWrapper $instance */
+                        return $instance->chunkLoadView($separator, $view, $data, $mergeData, $config);
+        }
+         
+    }
+     
+}
+
+    namespace Barryvdh\Debugbar { 
             /**
      * 
      *
@@ -15656,6 +15682,26 @@
                     /**
          * 
          *
+         * @static 
+         */ 
+        public static function reportErrorLevels($reportErrorLevels)
+        {
+                        /** @var \Facade\FlareClient\Flare $instance */
+                        return $instance->reportErrorLevels($reportErrorLevels);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function filterExceptionsUsing($filterExceptionsCallable)
+        {
+                        /** @var \Facade\FlareClient\Flare $instance */
+                        return $instance->filterExceptionsUsing($filterExceptionsCallable);
+        }
+                    /**
+         * 
+         *
          * @return null|string 
          * @static 
          */ 
@@ -15899,6 +15945,342 @@
      
 }
 
+    namespace Intervention\Image\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Image {
+                    /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */ 
+        public static function configure($config = [])
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
+        }
+                    /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
+        }
+                    /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
+        }
+                    /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+     
+}
+
+    namespace Livewire { 
+            /**
+     * 
+     *
+     * @see \Livewire\LivewireManager
+     */ 
+        class Livewire {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function component($alias, $viewClass = null)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->component($alias, $viewClass);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getAlias($class, $default = null)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getAlias($class, $default);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getComponentAliases()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getComponentAliases();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getClass($alias)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getClass($alias);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getInstance($component, $id)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getInstance($component, $id);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function mount($name, $params = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->mount($name, $params);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dummyMount($id, $tagName)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->dummyMount($id, $tagName);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function test($name, $params = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->test($name, $params);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function visit($browser, $class, $queryString = '')
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->visit($browser, $class, $queryString);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function actingAs($user, $driver = null)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->actingAs($user, $driver);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addPersistentMiddleware($middleware)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->addPersistentMiddleware($middleware);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setPersistentMiddleware($middleware)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->setPersistentMiddleware($middleware);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getPersistentMiddleware()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getPersistentMiddleware();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function styles($options = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->styles($options);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function scripts($options = [])
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->scripts($options);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isLivewireRequest()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isLivewireRequest();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isDefinitelyLivewireRequest()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isDefinitelyLivewireRequest();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isProbablyLivewireRequest()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isProbablyLivewireRequest();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function originalUrl()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->originalUrl();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function originalPath()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->originalPath();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function originalMethod()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->originalMethod();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getRootElementTagName($dom)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->getRootElementTagName($dom);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dispatch($event, ...$params)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->dispatch($event, ...$params);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function listen($event, $callback)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->listen($event, $callback);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isOnVapor()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isOnVapor();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function withQueryParams($queryParams)
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->withQueryParams($queryParams);
+        }
+         
+    }
+     
+}
+
     namespace Mckenziearts\Notify\Facades { 
             /**
      * 
@@ -16074,6 +16456,333 @@
      
 }
 
+    namespace SimpleSoftwareIO\QrCode\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class QrCode {
+                    /**
+         * Generates the QrCode.
+         *
+         * @param string $text
+         * @param string|null $filename
+         * @return void|\Illuminate\Support\HtmlString|string 
+         * @throws WriterException
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function generate($text, $filename = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->generate($text, $filename);
+        }
+                    /**
+         * Merges an image over the QrCode.
+         *
+         * @param string $filepath
+         * @param float $percentage
+         * @param \SimpleSoftwareIO\QrCode\SimpleSoftwareIO\QrCode\boolean|bool $absolute
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function merge($filepath, $percentage = 0.2, $absolute = false)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->merge($filepath, $percentage, $absolute);
+        }
+                    /**
+         * Merges an image string with the center of the QrCode.
+         *
+         * @param string $content
+         * @param float $percentage
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function mergeString($content, $percentage = 0.2)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->mergeString($content, $percentage);
+        }
+                    /**
+         * Sets the size of the QrCode.
+         *
+         * @param int $pixels
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function size($pixels)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->size($pixels);
+        }
+                    /**
+         * Sets the format of the QrCode.
+         *
+         * @param string $format
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function format($format)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->format($format);
+        }
+                    /**
+         * Sets the foreground color of the QrCode.
+         *
+         * @param int $red
+         * @param int $green
+         * @param int $blue
+         * @param null|int $alpha
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function color($red, $green, $blue, $alpha = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->color($red, $green, $blue, $alpha);
+        }
+                    /**
+         * Sets the background color of the QrCode.
+         *
+         * @param int $red
+         * @param int $green
+         * @param int $blue
+         * @param null|int $alpha
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function backgroundColor($red, $green, $blue, $alpha = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->backgroundColor($red, $green, $blue, $alpha);
+        }
+                    /**
+         * Sets the eye color for the provided eye index.
+         *
+         * @param int $eyeNumber
+         * @param int $innerRed
+         * @param int $innerGreen
+         * @param int $innerBlue
+         * @param int $outterRed
+         * @param int $outterGreen
+         * @param int $outterBlue
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function eyeColor($eyeNumber, $innerRed, $innerGreen, $innerBlue, $outterRed = 0, $outterGreen = 0, $outterBlue = 0)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->eyeColor($eyeNumber, $innerRed, $innerGreen, $innerBlue, $outterRed, $outterGreen, $outterBlue);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function gradient($startRed, $startGreen, $startBlue, $endRed, $endGreen, $endBlue, $type)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->gradient($startRed, $startGreen, $startBlue, $endRed, $endGreen, $endBlue, $type);
+        }
+                    /**
+         * Sets the eye style.
+         *
+         * @param string $style
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function eye($style)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->eye($style);
+        }
+                    /**
+         * Sets the style of the blocks for the QrCode.
+         *
+         * @param string $style
+         * @param float $size
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function style($style, $size = 0.5)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->style($style, $size);
+        }
+                    /**
+         * Sets the encoding for the QrCode.
+         * 
+         * Possible values are
+         * ISO-8859-2, ISO-8859-3, ISO-8859-4, ISO-8859-5, ISO-8859-6,
+         * ISO-8859-7, ISO-8859-8, ISO-8859-9, ISO-8859-10, ISO-8859-11,
+         * ISO-8859-12, ISO-8859-13, ISO-8859-14, ISO-8859-15, ISO-8859-16,
+         * SHIFT-JIS, WINDOWS-1250, WINDOWS-1251, WINDOWS-1252, WINDOWS-1256,
+         * UTF-16BE, UTF-8, ASCII, GBK, EUC-KR.
+         *
+         * @param string $encoding
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function encoding($encoding)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->encoding($encoding);
+        }
+                    /**
+         * Sets the error correction for the QrCode.
+         * 
+         * L: 7% loss.
+         * M: 15% loss.
+         * Q: 25% loss.
+         * H: 30% loss.
+         *
+         * @param string $errorCorrection
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function errorCorrection($errorCorrection)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->errorCorrection($errorCorrection);
+        }
+                    /**
+         * Sets the margin of the QrCode.
+         *
+         * @param int $margin
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function margin($margin)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->margin($margin);
+        }
+                    /**
+         * Fetches the Writer.
+         *
+         * @param \BaconQrCode\Renderer\ImageRenderer $renderer
+         * @return \BaconQrCode\Writer 
+         * @static 
+         */ 
+        public static function getWriter($renderer)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getWriter($renderer);
+        }
+                    /**
+         * Fetches the Image Renderer.
+         *
+         * @return \BaconQrCode\Renderer\ImageRenderer 
+         * @static 
+         */ 
+        public static function getRenderer()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getRenderer();
+        }
+                    /**
+         * Returns the Renderer Style.
+         *
+         * @return \BaconQrCode\Renderer\RendererStyle\RendererStyle 
+         * @static 
+         */ 
+        public static function getRendererStyle()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getRendererStyle();
+        }
+                    /**
+         * Fetches the formatter.
+         *
+         * @return \BaconQrCode\Renderer\Image\ImageBackEndInterface 
+         * @static 
+         */ 
+        public static function getFormatter()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getFormatter();
+        }
+                    /**
+         * Fetches the module.
+         *
+         * @return \BaconQrCode\Renderer\Module\ModuleInterface 
+         * @static 
+         */ 
+        public static function getModule()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getModule();
+        }
+                    /**
+         * Fetches the eye style.
+         *
+         * @return \BaconQrCode\Renderer\Eye\EyeInterface 
+         * @static 
+         */ 
+        public static function getEye()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getEye();
+        }
+                    /**
+         * Fetches the color fill.
+         *
+         * @return \BaconQrCode\Renderer\RendererStyle\Fill 
+         * @static 
+         */ 
+        public static function getFill()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getFill();
+        }
+                    /**
+         * Creates a RGB or Alpha channel color.
+         *
+         * @param int $red
+         * @param int $green
+         * @param int $blue
+         * @param null|int $alpha
+         * @return \BaconQrCode\Renderer\Color\ColorInterface 
+         * @static 
+         */ 
+        public static function createColor($red, $green, $blue, $alpha = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->createColor($red, $green, $blue, $alpha);
+        }
+         
+    }
+     
+}
+
+    namespace Alkoumi\LaravelArabicTafqeet { 
+            /**
+     * 
+     *
+     */ 
+        class Tafqeet {
+         
+    }
+     
+}
+
+    namespace Alkoumi\LaravelHijriDate { 
+            /**
+     * 
+     *
+     */ 
+        class Hijri {
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -16164,6 +16873,126 @@
      
 }
 
+    namespace Illuminate\Testing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Http\Response
+     */ 
+        class TestResponse {
+                    /**
+         * 
+         *
+         * @see \Livewire\LivewireServiceProvider::registerTestMacros()
+         * @param mixed $component
+         * @static 
+         */ 
+        public static function assertSeeLivewire($component)
+        {
+                        return \Illuminate\Testing\TestResponse::assertSeeLivewire($component);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\LivewireServiceProvider::registerTestMacros()
+         * @param mixed $component
+         * @static 
+         */ 
+        public static function assertDontSeeLivewire($component)
+        {
+                        return \Illuminate\Testing\TestResponse::assertDontSeeLivewire($component);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\View { 
+            /**
+     * 
+     *
+     */ 
+        class ComponentAttributeBag {
+                    /**
+         * 
+         *
+         * @see \Livewire\LivewireServiceProvider::registerViewMacros()
+         * @param mixed $name
+         * @static 
+         */ 
+        public static function wire($name)
+        {
+                        return \Illuminate\View\ComponentAttributeBag::wire($name);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class View {
+                    /**
+         * 
+         *
+         * @see \Livewire\Macros\ViewMacros::extends()
+         * @param mixed $view
+         * @param mixed $params
+         * @static 
+         */ 
+        public static function extends($view, $params = [])
+        {
+                        return \Illuminate\View\View::extends($view, $params);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Macros\ViewMacros::layout()
+         * @param mixed $view
+         * @param mixed $params
+         * @static 
+         */ 
+        public static function layout($view, $params = [])
+        {
+                        return \Illuminate\View\View::layout($view, $params);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Macros\ViewMacros::layoutData()
+         * @param mixed $data
+         * @static 
+         */ 
+        public static function layoutData($data = [])
+        {
+                        return \Illuminate\View\View::layoutData($data);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Macros\ViewMacros::section()
+         * @param mixed $section
+         * @static 
+         */ 
+        public static function section($section)
+        {
+                        return \Illuminate\View\View::section($section);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Macros\ViewMacros::slot()
+         * @param mixed $slot
+         * @static 
+         */ 
+        public static function slot($slot)
+        {
+                        return \Illuminate\View\View::slot($slot);
+        }
+         
+    }
+     
+}
+
 
 namespace  { 
             class App extends \Illuminate\Support\Facades\App {}
@@ -16177,7 +17006,7 @@ namespace  {
             class Config extends \Illuminate\Support\Facades\Config {}
             class Cookie extends \Illuminate\Support\Facades\Cookie {}
             class Crypt extends \Illuminate\Support\Facades\Crypt {}
-            class Date extends \Illuminate\Support\Facades\Date {}
+            class Date extends \Jenssegers\Date\Date {}
             class DB extends \Illuminate\Support\Facades\DB {}
             class Eloquent extends \Illuminate\Database\Eloquent\Model {             
                 /**
@@ -16714,6 +17543,19 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->without($relations);
+            }
+             
+                /**
+             * Set the relationships that should be eager loaded while removing any previously added eager loading specifications.
+             *
+             * @param mixed $relations
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function withOnly($relations)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->withOnly($relations);
             }
              
                 /**
@@ -19348,9 +20190,16 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
+            class PDF extends \Meneses\LaravelMpdf\Facades\LaravelMpdf {}
+            class Adate extends \Jenssegers\Date\Date {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
+            class Image extends \Intervention\Image\Facades\Image {}
+            class Livewire extends \Livewire\Livewire {}
             class Notify extends \Mckenziearts\Notify\Facades\LaravelNotify {}
+            class QrCode extends \SimpleSoftwareIO\QrCode\Facades\QrCode {}
+            class Tafqeet extends \Alkoumi\LaravelArabicTafqeet\Tafqeet {}
+            class hijri extends \Alkoumi\LaravelHijriDate\Hijri {}
      
 }
 

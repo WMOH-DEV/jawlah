@@ -24,7 +24,6 @@ Route::get('/', function () {
 });
 
 
-
 Route::get('/' , [TicketController::class , 'index']);
 Route::post('search', [TicketController::class, 'search']); ///search
 Route::get('order',[OrderController::class,'rand']);
@@ -48,7 +47,8 @@ Route::get('user' , [Authcontroller::class , 'useronly']);
 // to show orders of one user who do login
 Route::get('user', [OrderController::class, 'showOrders'])->name('user');
 
-
+Route::get('all/tickets',[Controller::class,'check']);
+Route::post('show/all/tickets',[Controller::class,'index'])->name('access');
 
 // to create anew ticket
 Route::get('storeticket', [TicketController::class, 'storeTicket'])->name('user');

@@ -5,7 +5,7 @@
             <!-- Logo -->
             <a class="font-w600 text-white tracking-wide" href="">
                 {{--                {{ __('global.site') }}--}}
-                <img src="{{asset('admin/assets/media/imgs/logo.png')}}" style="height:130px" alt="">
+                <img src="{{asset('uploads')}}/{{$logo}}" style="max-height:130px; max-width: 130px" alt="">
 
             </a>
             <!-- END Logo -->

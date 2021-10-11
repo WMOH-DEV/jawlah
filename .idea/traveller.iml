@@ -145,6 +145,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/alkoumi/laravel-arabic-tafqeet" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jenssegers/date" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laraveldaily/laravel-charts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/imagecache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/alexusmai/laravel-file-manager" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
